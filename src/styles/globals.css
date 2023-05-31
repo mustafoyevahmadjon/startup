@@ -1,0 +1,7 @@
+#nprogress .bar{
+  z-index: 1111 !important;
+}
+html,
+body {
+  scroll-behavior: smooth;
+}
