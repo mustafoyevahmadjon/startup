@@ -15,8 +15,8 @@ const PopularCourses = () => {
 				subtitle={t('popular_courses_description', { ns: 'home' })}
 			/>
 			<Carousel responsive={courseCarousel} arrows={true} showDots={false} autoPlay={true} autoPlaySpeed={5000} infinite>
-				{courses.map(item => (
-					<PopularCoursesCard item={item} key={item.title} />
+				{courses.map((item, idx) => (
+					<PopularCoursesCard item={item} key={idx} />
 				))}
 			</Carousel>
 		</>

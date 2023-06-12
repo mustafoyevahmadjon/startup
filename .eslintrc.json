@@ -15,8 +15,7 @@
 				"allowSingleExtends": true
 			}
 		],
-		"@next/next/no-page-custom-font": "off",
-		"react/no-unescaped-entities": "off",
+		"@typescript-eslint/no-explicit-any": "off"
 	},
 	"extends": [
 		"eslint:recommended",

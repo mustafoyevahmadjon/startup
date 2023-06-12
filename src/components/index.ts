@@ -16,4 +16,5 @@ export { default as AccountRecovery } from './account-recovery/account-recovery'
 export { default as Overview } from './overview/overview';
 export { default as Curriculum } from './curriculum/curriculum';
 export { default as Mentor } from './mentor/mentor';
-export {default as Review} from "./reivew/reivew"
+export { default as Review } from "./reivew/reivew"
+export { default as ErrorAlert } from "./error-alert/error-alert"

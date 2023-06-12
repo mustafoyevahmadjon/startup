@@ -22,8 +22,8 @@ const Pricing = ({ options, price, title, checked }: PricingProps) => {
         >
             <Heading size={'md'}>{title}</Heading>
             <List spacing={3} textAlign='start'>
-                {options.map(item => (
-                    <ListItem key={item.id}>
+                {options.map((item, idx) => (
+                    <ListItem key={idx}>
                         <ListIcon as={FaCheckCircle} color='green.500' />
                         {item.desc}
                     </ListItem>

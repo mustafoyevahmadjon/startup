@@ -14,9 +14,9 @@ const Categories = () => {
 		<>
 			<SectionTitle title={t('category_title', { ns: 'home' })} subtitle={t('category_description', { ns: 'home' })} />
 			<Carousel responsive={categoryCarousel} showDots={false} arrows={false} autoPlay={true} autoPlaySpeed={2000} infinite>
-				{categories.map(item => (
+				{categories.map((item, idx) => (
 					<Box
-						key={item.id}
+						key={idx}
 						minH={'200px'}
 						mx={2}
 						backgroundColor={backgroundColor}

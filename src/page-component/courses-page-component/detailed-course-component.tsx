@@ -237,9 +237,9 @@ const DetailedCourseComponent = () => {
 				colorScheme={'facebook'}
 			>
 				<TabList>
-					{tablist.map(tab => (
+					{tablist.map((tab, idx) => (
 						<Tab
-							key={tab.name}
+							key={idx}
 							fontWeight='bold'
 							textTransform='capitalize'
 							w='100%'

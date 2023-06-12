@@ -1,16 +1,13 @@
-import { DarkLogo, Eng, LightLogo, Rus, Uzb } from '@/icons'
+import { DarkLogo, LightLogo, } from '@/icons'
 import { Box, Button, Flex, HStack, Icon, IconButton, Menu, MenuButton, MenuItem, MenuList, useColorMode, useColorModeValue } from '@chakra-ui/react'
 import React from 'react'
 import { BsFillMoonStarsFill, BsFillSunFill } from "react-icons/bs"
-import { MdOutlineContactSupport } from "react-icons/md"
 import { BsTranslate } from "react-icons/bs"
 import { BiMenuAltLeft, BiUserCircle } from "react-icons/bi"
 import Link from "next/link";
 import { HeaderProps } from "@/layouts/header/header.props";
 import { language } from "@/config/constants";
 import { useTranslation } from "react-i18next";
-import { changeLanguage } from "i18next";
-import { bottom } from "@popperjs/core";
 import { useRouter } from "next/router";
 
 const Header = ({ onToggle }: HeaderProps) => {

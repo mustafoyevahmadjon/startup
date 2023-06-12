@@ -40,7 +40,7 @@ const Seo = (props: SeoProps) => {
                 <link
                     rel='shortcut icon'
                     href={siteConfig.favicon}
-                    type='image/x-icon'
+                    type="image/gif"
                 />
             </Head>
             <>{children}</>

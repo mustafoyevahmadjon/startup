@@ -51,7 +51,7 @@ const AuthNavbarComponent = () => {
 						</Link>
 					</HStack>
 					<HStack gap={{ base: 0, md: 5 }}>
-						{navigation[1].links.map(nav => (
+						{navigation[1].links.map((nav, idx) => (
 							<Link href={nav.route}>
 								<Box
 									display={{ base: 'none', md: 'flex' }}
@@ -74,9 +74,9 @@ const AuthNavbarComponent = () => {
 								{i18n.resolvedLanguage}
 							</MenuButton>
 							<MenuList p={0}>
-								{language.map(item => (
+								{language.map((item, idx) => (
 									<MenuItem
-										key={item.lng}
+										key={idx}
 										onClick={() => onLanguage(item.lng)}
 										icon={<item.icon />}
 										backgroundColor={
@@ -116,8 +116,8 @@ const AuthNavbarComponent = () => {
 				borderBottomColor={useColorModeValue('gray.200', 'gray.700')}
 			>
 				<HStack justify={'center'} align={'center'} h={'100%'} gap={5}>
-					{navigation[1].links.map(nav => (
-						<Link href={nav.route}>
+					{navigation[1].links.map((nav, idx) => (
+						<Link href={nav.route} key={idx}>
 							<Box
 								color={'facebook.300'}
 								_hover={{ textDecoration: 'underline', color: linkHover }}

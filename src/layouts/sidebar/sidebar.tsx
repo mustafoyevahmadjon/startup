@@ -32,10 +32,10 @@ const Sidebar = ({ toggle }: SidebarProps) => {
 				{navigation.map((item, idx) => (
 					<Box mt={10} key={idx}>
 						<Text>{t(item.title, { ns: "layout" })}</Text>
-						{item.links.map(nav => {
+						{item.links.map((nav, idx) => {
 							const active = `/${router.pathname.split('/')[1]}` == nav.route;
 							return (
-								<Link href={`${nav.route}`} key={item.title}>
+								<Link href={`${nav.route}`} key={idx}>
 									<Button colorScheme={"facebook"} variant={active ? "solid" : "ghost"} w={"full"} justifyContent={"flex-start"} mt={2}>
 										<HStack gap={2}>
 											<Icon as={nav.icon} />

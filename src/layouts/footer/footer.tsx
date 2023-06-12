@@ -18,9 +18,9 @@ const Footer = () => {
       h={'10vh'}
     >
       <Flex justify={'space-between'} align={'center'} h={'full'}>
-        <Text>© {format(new Date(), 'yyyy')} Sammi. {t('footer', { ns: 'layout' })}</Text>
+        <Text>© {format(new Date(), 'yyyy')} Zafedu. {t('footer', { ns: 'layout' })}</Text>
         <Flex gap={3} mr={10}>
-          <Link href={`https://t.me/Mfavy2031`}>
+          <Link href={`https://t.me/Mustafoyev_blog`}>
             <IconButton icon={<FaTelegram />} colorScheme={'facebook'} variant={'outline'} aria-label={'telegram'} />
           </Link>
           <Link href={`https://www.instagram.com/ahmadjon23012/`}>

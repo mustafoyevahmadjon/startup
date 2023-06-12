@@ -29,9 +29,9 @@ const ArticlePageComponent = ({ artciles }: ArticlePageComponentProps) => {
 			<Card my={10}>
 				<CardBody>
 					<Carousel responsive={testimonialsCarousel}>
-						{artciles.map(item => (
+						{artciles.map((item, idx) => (
 							<Box
-								key={item.id}
+								key={idx}
 								w={'full'}
 								h={{ base: '40vh', lg: '60vh' }}
 								backgroundImage={`url(${item.image.url})`}
@@ -72,8 +72,8 @@ const ArticlePageComponent = ({ artciles }: ArticlePageComponentProps) => {
 			</Card>
 
 			<Grid gridTemplateColumns={{ base: 'repeat(1, 1fr)', lg: 'repeat(2, 1fr)' }} gap={4}>
-				{artciles.map(item => (
-					<Box key={item.id} w={'full'} bg={cardBackgroundColor} boxShadow={'2xl'} rounded={'md'} p={6}>
+				{artciles.map((item, idx) => (
+					<Box key={idx} w={'full'} bg={cardBackgroundColor} boxShadow={'2xl'} rounded={'md'} p={6}>
 						<Link href={`/articles/${item.slug}`}>
 							<Image
 								src={item.image.url}

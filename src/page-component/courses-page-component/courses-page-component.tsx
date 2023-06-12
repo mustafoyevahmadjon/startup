@@ -54,8 +54,8 @@ const CoursesPageComponent = () => {
                     ))}
                 </Box>
                 <Box w={{ base: '100%', lg: '70%' }}>
-                    {courses.map(item => (
-                        <AllCoursesCard key={item.title} course={item} />
+                    {courses.map((item, idx) => (
+                        <AllCoursesCard key={idx} course={item} />
                     ))}
                 </Box>
             </Flex>

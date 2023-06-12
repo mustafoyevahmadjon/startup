@@ -1,6 +1,6 @@
 import { gql, request } from 'graphql-request';
-import { ArticleType } from 'src/interfaces/article.interface';
-import { Language } from 'src/interfaces/constants.interface';
+import { ArticleType } from '@/interfaces/article.interface';
+import { Language } from '@/interfaces/constants.interface';
 
 const grapqhlAPI = process.env.NEXT_PUBLIC_HYGRAPH_ENDPOINT as string;
 

@@ -61,9 +61,9 @@ const AuthPageComponent = () => {
                         </Heading>
                         <Stack direction={'row'} spacing={4} align={'center'}>
                             <AvatarGroup>
-                                {avatars.map(avatar => (
+                                {avatars.map((avatar, idx) => (
                                     <Avatar
-                                        key={avatar.name}
+                                        key={idx}
                                         name={avatar.name}
                                         src={avatar.url}
                                         size={breakpointValue}

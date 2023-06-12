@@ -29,9 +29,9 @@ const Curriculum = () => {
 				{t('lessons', { ns: 'courses' })}
 			</Flex>
 			<Accordion defaultIndex={[0]} allowToggle mr={2}>
-				{data.map(m => (
+				{data.map((m, idx) => (
 					<AccordionItem
-						key={m.title}
+						key={idx}
 						border={'1px solid facebook.500'}
 						borderRadius={'8px'}
 						mt={5}
@@ -55,9 +55,9 @@ const Curriculum = () => {
 							</Flex>
 						</AccordionButton>
 						<AccordionPanel pb={4}>
-							{m.lessons.map(lesson => (
+							{m.lessons.map((lesson, idx) => (
 								<Flex
-									key={lesson.name}
+									key={idx}
 									justify={'space-between'}
 									align={'center'}
 									py={2}
