@@ -31,17 +31,22 @@ const Login = ({ onNavigateStateComponent }: LoginProps) => {
 	const router = useRouter();
 	const { t } = useTranslation();
 	const toast = useToast();
-	const onSubmit = (formData: InterfaceEmailAndPassword) => {
-		login({ email: formData.email, password: formData.password });
-		router.push('/');
-		toast({
-			title: 'Successfully logged in',
-			status: 'info',
-			isClosable: true,
-			position: 'top-right',
-		});
-	}
 	const toggleShow = () => setShow(prev => !prev);
+	const onSubmit = (formData: InterfaceEmailAndPassword) => {
+		login({
+			email: formData.email, password: formData.password, callback: () => {
+				router.push('/');
+				toast({
+					title: 'Successfully logged in',
+					status: 'info',
+					isClosable: true,
+					position: 'top-right',
+				});
+			}
+		});
+
+	}
+
 
 	return (
 		<Stack spacing={4}>

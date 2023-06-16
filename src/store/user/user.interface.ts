@@ -21,6 +21,11 @@ export interface InterfaceEmailAndPassword {
 }
 
 export interface InterfaceEmailAndOtp {
-	otpVerification: string;
+	
+}
+
+export interface interfaceSign {
+	callback?: () => void
+	password: string;
 	email: string;
 }
