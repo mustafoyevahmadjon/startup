@@ -1,7 +1,7 @@
 import { Box, Flex, Grid, Heading, Icon, Text } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 import { BsCheck } from 'react-icons/bs';
-import { GoPrimitiveDot } from 'react-icons/go';
+import { RxDotFilled } from 'react-icons/rx';
 
 const Overview = () => {
 	const { t } = useTranslation();
@@ -34,7 +34,7 @@ const Overview = () => {
 			<Box mt={3}>
 				{requirement.split(', ').map((text, idx) => (
 					<Flex key={idx} gap={2} align={'center'}>
-						<Icon as={GoPrimitiveDot} w={5} h={5} />
+						<Icon as={RxDotFilled} fontSize={25} />{' '}
 						<Text>{text}</Text>
 					</Flex>
 				))}
