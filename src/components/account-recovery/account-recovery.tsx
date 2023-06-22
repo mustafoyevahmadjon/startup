@@ -34,7 +34,7 @@ const AccountRecovery = ({ onNavigateStateComponent }: AccountRecoveryProps) => 
     const [step, setStep] = useState<1 | 2 | 3>(1);
     const [email, setEmail] = useState<string>('');
 
-    const { sendVerificationCode, verifyVerificationCode, editProfilePassword } = useActions();
+    const { sendVerificationCode, verifyVerificationCode, editProfilePassword, clearError } = useActions();
     const { error, isLoading } = useTypedSelector(state => state.user);
     const { show, toggleShow, showConfirm, toggleShowConfirm } = useShowPassword();
     const toast = useToast();
@@ -64,7 +64,7 @@ const AccountRecovery = ({ onNavigateStateComponent }: AccountRecoveryProps) => 
                 </Text>
             </Heading>
             <Text>{t('account_recovery_description_form1', { ns: 'global' })}</Text>
-            <>{error && <ErrorAlert title={error as string} />}</>
+            <>{error && <ErrorAlert title={error as string} clearHandler={clearError} />}</>
             <Formik onSubmit={onForm1Submit} initialValues={{ email: "" }} validationSchema={AuthValidation.onlyEmail}>
                 <Form>
                     <TextField type='text' placeholder='mustafayevaxmadjon@gmail.com' name='email' label={t('login_input_email_label', { ns: 'global' })}></TextField>
@@ -77,7 +77,7 @@ const AccountRecovery = ({ onNavigateStateComponent }: AccountRecoveryProps) => 
                         h={14}
                         type={'submit'}
                         isLoading={isLoading}
-                        loadingText={'Loading...'}
+                        loadingText={`${t('loading', { ns: 'global' })}`}
                     >
                         {t('account_recovery_btn_form1', { ns: 'global' })}
                     </Button>
@@ -108,7 +108,7 @@ const AccountRecovery = ({ onNavigateStateComponent }: AccountRecoveryProps) => 
                 </Text>
             </Heading>
             <Text>{t('account_recovery_description_form2', { ns: 'global' })}</Text>
-            <>{error && <ErrorAlert title={error as string} />}</>
+            <>{error && <ErrorAlert title={error as string} clearHandler={clearError} />}</>
             <Formik
                 onSubmit={onForm2Submit}
                 initialValues={{ otp: '' }}
@@ -149,7 +149,7 @@ const AccountRecovery = ({ onNavigateStateComponent }: AccountRecoveryProps) => 
                             h={14}
                             type={'submit'}
                             isLoading={isLoading}
-                            loadingText={'Loading...'}
+                            loadingText={`${t('loading', { ns: 'global' })}`}
                         >
                             {t('account_recovery_btn_form2', { ns: 'global' })}
                         </Button>
@@ -165,8 +165,8 @@ const AccountRecovery = ({ onNavigateStateComponent }: AccountRecoveryProps) => 
             email, password: formData.password, callback: () => {
                 onNavigateStateComponent('login');
                 toast({
-                    title: 'Successfully edited',
-                    description: 'You can login to account with new passowrd',
+                    title: `${t('successfully_edited', { ns: 'global' })}`,
+					description: `${t('login_with_new_password', { ns: 'global' })}`,
                     status: 'success',
                     position: 'top-right',
                     isClosable: true,
@@ -228,7 +228,7 @@ const AccountRecovery = ({ onNavigateStateComponent }: AccountRecoveryProps) => 
                         h={14}
                         type={'submit'}
                         isLoading={isLoading}
-                        loadingText={'Loading...'}
+                        loadingText={`${t('loading', { ns: 'global' })}`}
                     >
                         {t('account_recovery_btn_form3', { ns: 'global' })}
                     </Button>

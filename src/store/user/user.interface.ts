@@ -20,10 +20,6 @@ export interface InterfaceEmailAndPassword {
 	email: string;
 }
 
-export interface InterfaceEmailAndOtp {
-	
-}
-
 export interface interfaceSign {
 	callback?: () => void
 	password: string;

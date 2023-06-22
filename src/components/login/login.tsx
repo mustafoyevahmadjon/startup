@@ -26,7 +26,7 @@ import { useRouter } from 'next/router';
 
 const Login = ({ onNavigateStateComponent }: LoginProps) => {
 	const [show, setShow] = useState<boolean>(false);
-	const { login } = useActions()
+	const { login, clearError } = useActions()
 	const { error, isLoading } = useTypedSelector(state => state.user);
 	const router = useRouter();
 	const { t } = useTranslation();
@@ -37,7 +37,7 @@ const Login = ({ onNavigateStateComponent }: LoginProps) => {
 			email: formData.email, password: formData.password, callback: () => {
 				router.push('/');
 				toast({
-					title: 'Successfully logged in',
+					title: `${t('successfully_logged', { ns: 'global' })}`,
 					status: 'info',
 					isClosable: true,
 					position: 'top-right',
@@ -69,7 +69,7 @@ const Login = ({ onNavigateStateComponent }: LoginProps) => {
 				validationSchema={AuthValidation.login}
 			>
 				<Form>
-					<>{error && <ErrorAlert title={error as string} />}</>
+					<>{error && <ErrorAlert title={error as string} clearHandler={clearError} />}</>
 					<TextField
 						name='email'
 						type='text'
@@ -110,7 +110,7 @@ const Login = ({ onNavigateStateComponent }: LoginProps) => {
 						h={14}
 						type={'submit'}
 						isLoading={isLoading}
-						loadingText={'Loading...'}
+						loadingText={`${t('loading', { ns: 'global' })}`}
 					>
 						{t('login_btn', { ns: 'global' })}
 					</Button>

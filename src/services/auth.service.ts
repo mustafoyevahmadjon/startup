@@ -1,7 +1,7 @@
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import { API_URL, getAuthUrl, getMailUrl, getUserUrl } from '@/config/api.config';
-import { removeTokensCookie, saveStorage } from '@/helpers/auth.helpers';
+import { removeTokensCookie, saveTokensCookie } from '@/helpers/auth.helpers';
 import { AuthUserResponse } from '@/store/user/user.interface';
 
 export const AuthService = {
@@ -12,8 +12,9 @@ export const AuthService = {
         });
 
         if (response.data.accessToken) {
-            saveStorage(response.data);
+            saveTokensCookie(response.data);
         }
+
         return response;
     },
 
@@ -24,19 +25,23 @@ export const AuthService = {
         });
 
         if (response.data.accessToken) {
-            saveStorage(response.data);
+            saveTokensCookie(response.data);
         }
+
         return response;
     },
 
     async sendOtp(email: string, isUser: boolean) {
-        const response = await axios.post<"success">(`${API_URL}${getMailUrl('send-otp')}`, { email, isUser })
-        return response
+        const response = await axios.post<'Success'>(`${API_URL}${getMailUrl('send-otp')}`, {
+            email,
+            isUser,
+        });
+
+        return response;
     },
 
-
     async verifyOtp(email: string, otpVerification: string) {
-        const response = await axios.post<'success'>(`${API_URL}${getMailUrl('verify-otp')}`, {
+        const response = await axios.post<'Success'>(`${API_URL}${getMailUrl('verify-otp')}`, {
             email,
             otpVerification,
         });
@@ -45,7 +50,7 @@ export const AuthService = {
     },
 
     async editProfilePassword(email: string, password: string) {
-        const response = await axios.put<'success'>(`${API_URL}${getUserUrl('edit-password')}`, {
+        const response = await axios.put<'Success'>(`${API_URL}${getUserUrl('edit-password')}`, {
             email,
             password,
         });
@@ -53,18 +58,26 @@ export const AuthService = {
         return response;
     },
 
+    async checkUser(email: string) {
+        const respone = await axios.post<'user' | 'no-user'>(`${API_URL}${getAuthUrl('check-user')}`, {
+            email,
+        });
+
+        return respone.data;
+    },
+
     logout() {
         removeTokensCookie();
-        localStorage.removeItem('user');
     },
 
     async getNewTokens() {
-        const refreshToken = Cookies.get('refreshToken');
+        const refreshToken = Cookies.get('refresh');
         const response = await axios.post(`${API_URL}${getAuthUrl('access')}`, { refreshToken });
 
         if (response.data.accessToken) {
-            saveStorage(response.data);
+            saveTokensCookie(response.data);
         }
+
         return response;
     },
 };

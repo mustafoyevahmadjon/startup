@@ -19,7 +19,7 @@ import ErrorAlert from '../error-alert/error-alert';
 
 const Verification = () => {
     const { t } = useTranslation();
-    const { verifyVerificationCode, register } = useActions();
+    const { verifyVerificationCode, register, clearError } = useActions();
     const { error, isLoading, user } = useTypedSelector(state => state.user);
     const router = useRouter();
     const toast = useToast();
@@ -33,7 +33,11 @@ const Verification = () => {
                     password: user?.password as string,
                     callback: () => {
                         router.push('/');
-                        toast({ title: 'success logged in', position: 'top-right', isClosable: true });
+                        toast({
+                            title: `${t('successfully_logged', { ns: 'global' })}`,
+                            position: 'top-right',
+                            isClosable: true,
+                        });
                     }
                 })
             }
@@ -55,7 +59,7 @@ const Verification = () => {
             <Text color={'gray.500'} fontSize={{ base: 'sm', sm: 'md' }}>
                 {t('verification_description', { ns: 'global' })}
             </Text>
-            <>{error && <ErrorAlert title={error as string} />}</>
+            <>{error && <ErrorAlert title={error as string} clearHandler={clearError} />}</>
             <Formik onSubmit={onSubmit} initialValues={{ otp: '' }} validationSchema={AuthValidation.otp}>
                 {formik => (
                     <Form>
@@ -92,7 +96,7 @@ const Verification = () => {
                             h={14}
                             type={'submit'}
                             isLoading={isLoading}
-                            loadingText={'Loading...'}
+                            loadingText={`${t('loading', { ns: 'global' })}`}
                         >
                             {t('verification_btn', { ns: 'global' })}
                         </Button>

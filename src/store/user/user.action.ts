@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { errorCatch } from '@/helpers/api.helpers';
 import { AuthService } from '@/services/auth.service';
-import { AuthUserResponse, InterfaceEmailAndPassword, InterfaceEmailAndOtp, interfaceSign } from './user.interface';
+import { AuthUserResponse, } from './user.interface';
 
 export const register = createAsyncThunk<AuthUserResponse, { email: string, password: string, callback: () => void }>(
 	'auth/register',

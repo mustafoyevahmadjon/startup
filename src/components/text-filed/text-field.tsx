@@ -2,9 +2,11 @@ import React from 'react'
 import { TextFieldProps } from './text-field.props'
 import { ErrorMessage, FieldHookConfig, useField } from "formik";
 import { FormControl, FormErrorMessage, FormLabel, Input, InputGroup } from "@chakra-ui/react";
+import { useTranslation } from 'react-i18next';
 
 const TextField = ({ label, placeholder, type, children, disabled, ...props }: TextFieldProps & FieldHookConfig<string>) => {
   const [field, meta] = useField(props);
+  const { t } = useTranslation()
 
   return (
     <FormControl mt={15} isRequired isInvalid={!!meta.touched && !!meta.error}>
@@ -20,9 +22,7 @@ const TextField = ({ label, placeholder, type, children, disabled, ...props }: T
         />
         {children}
       </InputGroup>
-      <FormErrorMessage>
-        <ErrorMessage name={field.name} />
-      </FormErrorMessage>
+      <FormErrorMessage>{t(`${meta.error}`, { ns: 'global' })}</FormErrorMessage>
     </FormControl>
   )
 }

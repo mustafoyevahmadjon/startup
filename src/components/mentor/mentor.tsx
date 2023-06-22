@@ -20,7 +20,7 @@ const Mentor = () => {
 			<Flex mt={5} gap={5} align={'center'}>
 				<Avatar
 					display={{ base: 'none', md: 'block' }}
-					src='https://media.graphassets.com/NfxHACAlR4CkvdhnB3gs'
+					src='https://media.graphassets.com/H2ZxmIbvTTKOuxHlCfNx'
 					size={'2xl'}
 				/>
 				<Box>

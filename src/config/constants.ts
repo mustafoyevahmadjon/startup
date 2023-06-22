@@ -175,9 +175,9 @@ export const courses: CourseType[] = [
         reviewAvarage: 4.5,
         reviewCount: 200,
         author: {
-            firstName: 'Samar',
+            firstName: 'Zafar',
             lastName: 'Badriddinov',
-            avatar: 'https://media.graphassets.com/NfxHACAlR4CkvdhnB3gs',
+            avatar: 'https://media.graphassets.com/H2ZxmIbvTTKOuxHlCfNx',
         },
     },
     {
@@ -191,9 +191,9 @@ export const courses: CourseType[] = [
         reviewAvarage: 4.5,
         reviewCount: 250,
         author: {
-            firstName: 'Samar',
+            firstName: 'Zafar',
             lastName: 'Badriddinov',
-            avatar: 'https://media.graphassets.com/NfxHACAlR4CkvdhnB3gs',
+            avatar: 'https://media.graphassets.com/H2ZxmIbvTTKOuxHlCfNx',
         },
     },
     {
@@ -207,9 +207,9 @@ export const courses: CourseType[] = [
         reviewAvarage: 4.5,
         reviewCount: 150,
         author: {
-            firstName: 'Samar',
+            firstName: 'Zafar',
             lastName: 'Badriddinov',
-            avatar: 'https://media.graphassets.com/NfxHACAlR4CkvdhnB3gs',
+            avatar: 'https://media.graphassets.com/H2ZxmIbvTTKOuxHlCfNx',
         },
     },
     {
@@ -223,9 +223,9 @@ export const courses: CourseType[] = [
         reviewAvarage: 5,
         reviewCount: 250,
         author: {
-            firstName: 'Samar',
+            firstName: 'Zafar',
             lastName: 'Badriddinov',
-            avatar: 'https://media.graphassets.com/NfxHACAlR4CkvdhnB3gs',
+            avatar: 'https://media.graphassets.com/H2ZxmIbvTTKOuxHlCfNx',
         },
     },
     {
@@ -239,9 +239,9 @@ export const courses: CourseType[] = [
         reviewAvarage: 4.9,
         reviewCount: 120,
         author: {
-            firstName: 'Samar',
+            firstName: 'Zafar',
             lastName: 'Badriddinov',
-            avatar: 'https://media.graphassets.com/NfxHACAlR4CkvdhnB3gs',
+            avatar: 'https://media.graphassets.com/H2ZxmIbvTTKOuxHlCfNx',
         },
     },
     {
@@ -255,9 +255,9 @@ export const courses: CourseType[] = [
         reviewAvarage: 5,
         reviewCount: 250,
         author: {
-            firstName: 'Samar',
+            firstName: 'Zafar',
             lastName: 'Badriddinov',
-            avatar: 'https://media.graphassets.com/NfxHACAlR4CkvdhnB3gs',
+            avatar: 'https://media.graphassets.com/H2ZxmIbvTTKOuxHlCfNx',
         },
     },
 ];

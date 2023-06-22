@@ -1,14 +1,19 @@
 import React from 'react'
-import { Box, Button, Container, HStack, Icon, Text, useColorModeValue } from "@chakra-ui/react";
-import { navigation } from "@/config/constants";
+import { Box, Button, Container, HStack, Icon, Menu, MenuButton, MenuItem, MenuList, Text, useColorModeValue } from "@chakra-ui/react";
+import { language, navigation } from "@/config/constants";
 import Link from "next/link";
 import { useRouter } from 'next/router';
 import { SidebarProps } from "@/layouts/sidebar/sidebar.props";
 import { useTranslation } from "react-i18next";
+import { TbWorld } from 'react-icons/tb';
 
 const Sidebar = ({ toggle }: SidebarProps) => {
 	const router = useRouter()
-	const { t } = useTranslation()
+	const { t, i18n } = useTranslation()
+	const onLanguage = (lng: string) => {
+		router.replace(router.asPath);
+		i18n.changeLanguage(lng);
+	};
 	return (
 		<Box
 			zIndex={1001}
@@ -29,6 +34,34 @@ const Sidebar = ({ toggle }: SidebarProps) => {
 			transition={'all .7s ease'}
 		>
 			<Container maxW={"container.xl"}>
+				<Menu placement='bottom'>
+					<MenuButton
+						mt={4}
+						w={'full'}
+						as={Button}
+						rightIcon={<TbWorld />}
+						textTransform={'capitalize'}
+						colorScheme={'gray'}
+						variant={'outline'}
+						display={{ base: "block", md: "none" }}
+					>
+						{i18n.resolvedLanguage}
+					</MenuButton>
+					<MenuList p={0}>
+						{language.map(item => (
+							<MenuItem
+								key={item.lng}
+								onClick={() => onLanguage(item.lng)}
+								icon={<item.icon />}
+								backgroundColor={i18n.resolvedLanguage === item.lng ? 'facebook.500' : ''}
+								color={i18n.resolvedLanguage === item.lng ? 'white' : ''}
+							>
+								{item.nativeLng}
+							</MenuItem>
+						))}
+					</MenuList>
+				</Menu>
+
 				{navigation.map((item, idx) => (
 					<Box mt={10} key={idx}>
 						<Text>{t(item.title, { ns: "layout" })}</Text>
@@ -47,6 +80,7 @@ const Sidebar = ({ toggle }: SidebarProps) => {
 						})}
 					</Box>
 				))}
+
 			</Container>
 		</Box>
 	)
