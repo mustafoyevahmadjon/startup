@@ -84,6 +84,7 @@ const Header = ({ onToggle }: HeaderProps) => {
 									onClick={() => onLanguage(item.lng)}
 									icon={<item.icon />}
 									backgroundColor={i18n.resolvedLanguage === item.lng ? 'facebook.500' : ''}
+									color={i18n.resolvedLanguage === item.lng ? 'facebook.100' : ''}
 								>
 									{item.nativeLng}
 								</MenuItem>
