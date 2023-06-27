@@ -167,7 +167,7 @@ const AccountRecovery = ({ onNavigateStateComponent }: AccountRecoveryProps) => 
                 toast({
                     title: `${t('successfully_edited', { ns: 'global' })}`,
 					description: `${t('login_with_new_password', { ns: 'global' })}`,
-                    status: 'success',
+                    status: "success",
                     position: 'top-right',
                     isClosable: true,
                 });

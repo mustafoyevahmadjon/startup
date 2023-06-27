@@ -5,25 +5,34 @@ import { useTranslation } from 'react-i18next'
 import { teachValues } from '@/config/constants';
 import { FC } from 'react';
 import { LaunchCourseIcon, PlanCurriculumIcon, RecordVideoIcon } from '@/icons';
-import { Form, Formik } from 'formik';
+import { Form, Formik, FormikConfig } from 'formik';
 import TextField from '@/components/text-filed/text-field';
 import { GoVerified } from 'react-icons/go';
 import { InstructorValidation } from '@/validations/instructor.validation';
+import { useActions } from '@/hooks/useActions';
+import { useTypedSelector } from '@/hooks/useTypedSelector';
+import { ErrorAlert } from '@/components';
 
 const BecomeInstructorPageComponent = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { t } = useTranslation();
-
+  const { applyInstructor, clearInstructorError } = useActions()
   const toast = useToast();
+  const { error, isLoading } = useTypedSelector(state => state.instructor)
 
-  const onSubmit = () => {
-    toast({
-      title: 'Successfully sent',
-      description: "We'll contact with you coming soon",
-      isClosable: true,
-      position: 'top-right',
-    });
-    onClose();
+  const onSubmit = formData => {
+    applyInstructor({
+      ...formData,
+      callback: () => {
+        toast({
+          title: 'Successfully sent',
+          description: "We'll contact with you coming soon",
+          isClosable: true,
+          position: 'top-right',
+        });
+        onClose();
+      }
+    })
   };
 
 
@@ -133,6 +142,7 @@ const BecomeInstructorPageComponent = () => {
             <Form>
               <ModalBody>
                 <Stack spacing={4}>
+                  <>{error && <ErrorAlert title={error as string} clearHandler={clearInstructorError} />}</>
                   <Flex gap={4}>
                     <TextField
                       name={'firstName'}
@@ -162,7 +172,13 @@ const BecomeInstructorPageComponent = () => {
                 </Stack>
               </ModalBody>
               <ModalFooter>
-                <Button type='submit' colorScheme={'facebook'} h={14} rightIcon={<GoVerified />}>
+                <Button
+                  isLoading={isLoading}
+                  loadingText={`${t('loading', { ns: 'global' })}`}
+                  type='submit'
+                  colorScheme={'facebook'}
+                  h={14}
+                  rightIcon={<GoVerified />}>
                   {t('send_to_verify_btn', { ns: 'global' })}
                 </Button>
               </ModalFooter>

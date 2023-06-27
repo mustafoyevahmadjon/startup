@@ -32,7 +32,7 @@ export const AuthService = {
     },
 
     async sendOtp(email: string, isUser: boolean) {
-        const response = await axios.post<'success'>(`${API_URL}${getMailUrl('send-otp')}`, {
+        const response = await axios.post<"success">(`${API_URL}${getMailUrl('send-otp')}`, {
             email,
             isUser,
         });
@@ -41,7 +41,7 @@ export const AuthService = {
     },
 
     async verifyOtp(email: string, otpVerification: string) {
-        const response = await axios.post<'success'>(`${API_URL}${getMailUrl('verify-otp')}`, {
+        const response = await axios.post<"success">(`${API_URL}${getMailUrl('verify-otp')}`, {
             email,
             otpVerification,
         });
@@ -50,7 +50,7 @@ export const AuthService = {
     },
 
     async editProfilePassword(email: string, password: string) {
-        const response = await axios.put<'success'>(`${API_URL}${getUserUrl('edit-password')}`, {
+        const response = await axios.put<"success">(`${API_URL}${getUserUrl('edit-password')}`, {
             email,
             password,
         });
