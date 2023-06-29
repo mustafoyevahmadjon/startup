@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { FC } from 'react'
 import { Box, Button, Container, HStack, Icon, Menu, MenuButton, MenuItem, MenuList, Text, useColorModeValue } from "@chakra-ui/react";
 import { language, navigation } from "@/config/constants";
 import Link from "next/link";
@@ -7,7 +7,7 @@ import { SidebarProps } from "@/layouts/sidebar/sidebar.props";
 import { useTranslation } from "react-i18next";
 import { TbWorld } from 'react-icons/tb';
 
-const Sidebar = ({ toggle }: SidebarProps) => {
+const Sidebar: FC<SidebarProps> = ({ toggle }: SidebarProps) => {
 	const router = useRouter()
 	const { t, i18n } = useTranslation()
 	const onLanguage = (lng: string) => {

@@ -1,7 +1,18 @@
 import { AiFillAmazonCircle, AiOutlineDashboard, AiOutlineDollar } from 'react-icons/ai';
-import { FaApplePay, FaBookReader, FaDraftingCompass, FaQuestionCircle } from 'react-icons/fa';
 import { CiViewList } from 'react-icons/ci';
-import { MdImportContacts, MdOutlineContactMail } from 'react-icons/md';
+import {
+    FaApplePay,
+    FaBookReader,
+    FaDraftingCompass,
+    FaFirstdraft,
+    FaListAlt,
+    FaQuestionCircle,
+    FaUserGraduate,
+} from 'react-icons/fa';
+import { FiEdit } from 'react-icons/fi';
+import { MdImportContacts, MdOutlineContactMail, MdOutlineCreateNewFolder } from 'react-icons/md';
+import { RiMoneyDollarBoxLine } from 'react-icons/ri';
+import { SiAmd, SiCisco, SiLogitech, SiSpotify } from 'react-icons/si';
 import {
     AnnouncementIcons,
     CodingIcons,
@@ -11,7 +22,6 @@ import {
     PersonIcons,
     PrintIcons, RightLineIcon, TeachVal1Icon, TeachVal2Icon, TeachVal3Icon
 } from '@/icons';
-import { SiAmd, SiCisco, SiLogitech, SiSpotify } from 'react-icons/si';
 import EngIcons from "@/icons/eng";
 import UzbIcons from "@/icons/uzb";
 import TurkIcon from "@/icons/turk";
@@ -364,19 +374,90 @@ export const voiceLanguages = [
 ];
 
 export const teachValues = [
+    {
+        title: 'teach_your_way',
+        description: 'teach_your_way_description',
+        icon: TeachVal1Icon,
+    },
+    {
+        title: 'inspire_learners',
+        description: 'inspire_learners_ddescription',
+        icon: TeachVal2Icon,
+    },
+    {
+        title: 'get_rewarded',
+        description: 'get_rewarded_description',
+        icon: TeachVal3Icon,
+    },
+];
+
+export const instructorSidebar = [
+    {
+        name: 'Students',
+        icon: FaUserGraduate,
+        route: 'students',
+    },
+    {
+        name: 'Courses',
+        icon: FaListAlt,
+        route: 'courses',
+    },
+    {
+        name: 'Create course',
+        icon: MdOutlineCreateNewFolder,
+        route: 'create-course',
+    },
+    {
+        name: 'Edit courses',
+        icon: FiEdit,
+        route: 'edit-courses',
+    },
+    {
+        name: 'Draft courses',
+        icon: FaFirstdraft,
+        route: 'draft-courses',
+    },
+    {
+        name: 'Revenue',
+        icon: RiMoneyDollarBoxLine,
+        route: 'revenue',
+    },
+];
+
+export const courseusers = [
 	{
-		title: 'teach_your_way',
-		description: 'teach_your_way_description',
-		icon: TeachVal1Icon,
+		id: 1,
+		email: 'ab@gmail.com',
+		fullName: 'Samar Badriddinov',
+		year: 2022,
+		userGain: 100,
 	},
 	{
-		title: 'inspire_learners',
-		description: 'inspire_learners_ddescription',
-		icon: TeachVal2Icon,
+		id: 2,
+		email: 'ab@gmail.com',
+		fullName: 'Osman Ali',
+		year: 2022,
+		userGain: 450,
 	},
 	{
-		title: 'get_rewarded',
-		description: 'get_rewarded_description',
-		icon: TeachVal3Icon,
+		id: 3,
+		year: 2023,
+		fullName: 'Shox Abdulloh',
+		email: 'ab@gmail.com',
+		userGain: 550,
+	},
+	{
+		id: 4,
+		year: 2023,
+		fullName: 'Abdulaziz Alimov',
+		email: 'ab@gmail.com',
+		userGain: 1000,
+	},
+	{
+		id: 5,
+		year: 2023,
+		fullName: 'Yusuf Khamdamov',
+		email: 'ab@gmail.com',
+		userGain: 1500,
 	},
 ];
