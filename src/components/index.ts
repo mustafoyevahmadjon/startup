@@ -19,3 +19,7 @@ export { default as Mentor } from './mentor/mentor';
 export { default as Review } from "./reivew/reivew"
 export { default as ErrorAlert } from "./error-alert/error-alert"
 export { default as InstructorCoursesCard } from './instructor-courses-card/instructor-courses-card';
+export { default as InstructorEditCourseCard } from './instructor-courses-card/instructor-edit-course-card';
+export { default as DraftCourseCard } from './draft-course-card/draft-course-card';
+export { default as StatsCard } from './stats-card/stats-card';
+export { default as InstructorManageCourse } from './instructor-manage-course/instructor-manage-course';

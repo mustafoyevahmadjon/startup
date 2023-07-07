@@ -1,10 +1,10 @@
 import { withInstructorLayout } from '@/layouts/instructor'
+import { DraftCourseComponent } from '@/page-component'
 import { NextPage } from 'next'
-import React from 'react'
 
 const DraftCourses: NextPage = () => {
   return (
-    <div>DraftCourses</div>
+    <DraftCourseComponent />
   )
 }
 

@@ -1,6 +1,5 @@
 import { withLayout } from '@/layouts/layout'
 import { AboutPageComponent } from '@/page-component'
-import React from 'react'
 import Seo from "@/layouts/seo/seo";
 import {useTranslation} from "react-i18next";
 

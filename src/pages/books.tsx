@@ -1,4 +1,3 @@
-import React from 'react'
 import {BooksPageComponent} from "@/page-component";
 import {withLayout} from "@/layouts/layout";
 import Seo from "@/layouts/seo/seo";

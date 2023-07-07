@@ -1,6 +1,5 @@
 import SectionTitle from '@/components/section-title/section-title'
 import { Box, Button, Card, CardBody, Divider, Flex, Grid, HStack, Heading, Icon, Image, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Stack, Tab, TabList, TabPanel, TabPanels, Tabs, Text, useDisclosure, useToast } from '@chakra-ui/react'
-import React from 'react'
 import { useTranslation } from 'react-i18next'
 import { teachValues } from '@/config/constants';
 import { FC } from 'react';

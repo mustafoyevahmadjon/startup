@@ -1,5 +1,4 @@
 import { AuthPageComponent } from '@/page-component'
-import React from 'react'
 import {useTranslation} from "react-i18next";
 import Seo from "@/layouts/seo/seo";
 

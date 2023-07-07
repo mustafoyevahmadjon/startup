@@ -1,6 +1,5 @@
-import React from 'react'
 import { TextFieldProps } from './text-field.props'
-import { ErrorMessage, FieldHookConfig, useField } from "formik";
+import { FieldHookConfig, useField } from "formik";
 import { FormControl, FormErrorMessage, FormLabel, Input, InputGroup } from "@chakra-ui/react";
 import { useTranslation } from 'react-i18next';
 
