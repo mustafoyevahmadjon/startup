@@ -1,6 +1,7 @@
 import {
     Button,
     Center,
+    Heading,
     Icon,
     InputRightElement,
     PinInput,
