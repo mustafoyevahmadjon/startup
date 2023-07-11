@@ -7,11 +7,11 @@ const SocialMedia = () => {
     const { t } = useTranslation();
 
     const google = () => {
-        signIn('google', { callbackUrl: `${process.env.NEXT_PUBLIC_CLIENT_DOMAIN}` });
+        signIn('google', { callbackUrl: `${process.env.NEXTAUTH_URL}` });
     };
 
     const github = () => {
-        signIn('github', { callbackUrl: `${process.env.NEXT_PUBLIC_CLIENT_DOMAIN}` });
+        signIn('github', { callbackUrl: `${process.env.NEXTAUTH_URL}` });
     };
 
     return (

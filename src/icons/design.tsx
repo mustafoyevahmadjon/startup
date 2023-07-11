@@ -1,4 +1,4 @@
-import { Icon, useColorModeValue } from '@chakra-ui/react';
+import { Icon } from '@chakra-ui/react';
 import { IconProp } from './icons.props';
 
 const Design = ({ ...props }: IconProp): JSX.Element => {

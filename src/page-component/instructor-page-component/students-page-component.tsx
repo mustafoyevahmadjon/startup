@@ -1,6 +1,6 @@
 import SectionTitle from "@/components/section-title/section-title"
 import { courseusers } from "@/config/constants"
-import { Box, Button, Card, CardBody, HStack, Heading, Input, Stack, Table, TableCaption, TableContainer, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/react"
+import { Box, Button, Card, CardBody, Heading, Input, Stack, Table, TableCaption, TableContainer, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/react"
 import { CategoryScale } from "chart.js"
 import Chart from "chart.js/auto"
 import { useState } from "react"

@@ -13,6 +13,7 @@ const EditDetailedCoursePageComponent = () => {
   const router = useRouter();
   const onSubmit = (formData: FormikValues) => {
     const data = formData as SubmitValuesInterface
+    console.log(data);    
   }
 
   return (

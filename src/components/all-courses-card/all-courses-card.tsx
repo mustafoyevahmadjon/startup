@@ -5,7 +5,6 @@ import { CiViewList } from 'react-icons/ci';
 import { SiGoogleanalytics } from 'react-icons/si';
 import ReactStars from 'react-stars';
 import { AllCoursesCardProps } from './all-courses-card.props';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 const AllCoursesCard = ({ course }: AllCoursesCardProps) => {

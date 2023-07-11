@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import { SidebarProps } from './sidebar.props'
 import { Box, Button, Container, HStack, Icon, Menu, MenuButton, MenuItem, MenuList, Text, useColorModeValue } from "@chakra-ui/react";
-import { instructorSidebar, language, navigation } from "@/config/constants";
+import { instructorSidebar, language } from "@/config/constants";
 import Link from "next/link";
 import { useRouter } from 'next/router';
 import { useTranslation } from "react-i18next";
@@ -54,7 +54,6 @@ const InstructorSidebar: FC<SidebarProps> = ({ toggle }): JSX.Element => {
                 onClick={() => onLanguage(item.lng)}
                 icon={<item.icon />}
                 backgroundColor={i18n.resolvedLanguage === item.lng ? 'facebook.500' : ''}
-                color={i18n.resolvedLanguage === item.lng ? 'white' : ''}
               >
                 {item.nativeLng}
               </MenuItem>
@@ -63,11 +62,11 @@ const InstructorSidebar: FC<SidebarProps> = ({ toggle }): JSX.Element => {
         </Menu>
         <Text fontSize={"xl"} textTransform={"uppercase"} mt={10}>Instructor Admin</Text>
         {instructorSidebar.map((item, idx) => {
-          const active = `/instructor/${router.pathname.split('/')[2]}` == item.route;
+          const active = `/instructor/${router.pathname.split('/')[2]}` == `/instructor/${item.route}`;
           return (
             <Link href={`/instructor/${item.route}`} key={idx}>
               <Button colorScheme={"facebook"}
-                variant={"ghost"}
+                variant={active ? 'solid' : 'ghost'}
                 w={"full"}
                 justifyContent={"flex-start"}
                 h={14}

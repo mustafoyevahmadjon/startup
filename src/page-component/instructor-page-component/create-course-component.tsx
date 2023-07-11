@@ -1,11 +1,26 @@
 import SectionTitle from '@/components/section-title/section-title';
-import { Divider } from "@chakra-ui/react"
+import { Divider, useToast } from "@chakra-ui/react"
 import { InstructorManageCourse } from '@/components';
+import { SubmitValuesInterface } from '@/components/instructor-manage-course/instructor-manage-course.props';
+import { useActions } from '@/hooks/useActions';
 
 
 
 const CreateCourseComponent = () => {
-  const onSubmit = (data) => { }
+  const { createCourse } = useActions()
+  const toast = useToast()
+  const onSubmit = (data: SubmitValuesInterface) => {
+    createCourse({
+      ...data, callback: () => {
+        toast({
+          title: "successfully created created",
+          description: "You can customize your curriculum for you course",
+          position: "top-right",
+          isClosable: true,
+        })
+      }
+    });
+  }
   return (
     <>
       <SectionTitle
