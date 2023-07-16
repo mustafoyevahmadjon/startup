@@ -1,9 +1,10 @@
 import SectionTitle from "@/components/section-title/section-title"
-import { courses } from '@/config/constants';
 import { Grid } from "@chakra-ui/react"
 import { InstructorEditCourseCard } from '@/components';
+import { useTypedSelector } from "@/hooks/useTypedSelector";
 
 const EditCoursePageComponent = () => {
+  const { courses } = useTypedSelector(state => state.instructor)
   return (
     <>
       <SectionTitle

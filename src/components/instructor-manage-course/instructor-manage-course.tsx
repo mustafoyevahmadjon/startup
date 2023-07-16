@@ -1,7 +1,7 @@
-import { Box, Button, Flex, FormLabel, Stack, Text } from '@chakra-ui/react';
+import { Box, Button, Flex, FormLabel, Icon, Stack, Text, Image } from '@chakra-ui/react';
 import { Form, Formik, FormikValues } from 'formik';
 import dynamic from 'next/dynamic';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FileUploader } from 'react-drag-drop-files';
 import { GiSave } from 'react-icons/gi';
 import 'react-quill/dist/quill.snow.css';
@@ -22,13 +22,17 @@ import { useTranslation } from 'react-i18next';
 import ErrorAlert from '../error-alert/error-alert';
 import { useActions } from '@/hooks/useActions';
 import { useRouter } from 'next/router';
+import { loadImage } from '@/helpers/image.helper';
+import { FaTimes } from 'react-icons/fa';
 
 
 const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
 
-const InstructorManageCourse = ({ submitHandler, titleBtn }: InstructorManageCourseProps) => {
-  const [file, setFile] = useState<File>();
+const InstructorManageCourse = ({ submitHandler, titleBtn, courseValues }: InstructorManageCourseProps) => {
+  const [file, setFile] = useState<File | string | null>();
   const [errorFIle, seterrorFIle] = useState("")
+  const [initialValues, setinitialValues] = useState(manageCourseValues)
+
   const { error, isLoading } = useTypedSelector(state => state.course)
   const { t } = useTranslation()
   const { clearCourseError, startLoading } = useActions()
@@ -52,12 +56,20 @@ const InstructorManageCourse = ({ submitHandler, titleBtn }: InstructorManageCou
     router.push("/instructor/courses")
   };
 
+  useEffect(() => {
+    if (courseValues) {
+      setinitialValues(courseValues)
+      setFile(courseValues.previewImage)
+    }
+  }, [courseValues])
+
   return (
     <>
       <Formik
         onSubmit={onSubmit}
-        initialValues={manageCourseValues}
+        initialValues={initialValues}
         validationSchema={CourseValidation.create}
+        enableReinitialize
       >
         {formik => (
           <Form>
@@ -77,6 +89,7 @@ const InstructorManageCourse = ({ submitHandler, titleBtn }: InstructorManageCou
                       name='learn'
                       placeholder='Full project...'
                       formik={formik}
+                      values={formik.values.learn}
                       errorMessage={formik.touched.learn ? (formik.errors.learn as string) : ''}
                     />
                     <TagField
@@ -84,6 +97,7 @@ const InstructorManageCourse = ({ submitHandler, titleBtn }: InstructorManageCou
                       name='requirements'
                       placeholder='Basic JavaScript...'
                       formik={formik}
+                      values={formik.values.requirements}
                       errorMessage={
                         formik.touched.requirements ? (formik.errors.requirements as string) : ''
                       }
@@ -151,33 +165,60 @@ const InstructorManageCourse = ({ submitHandler, titleBtn }: InstructorManageCou
                     name='tags'
                     placeholder='JavaScript...'
                     formik={formik}
+                    values={formik.values.tags}
                     errorMessage={formik.touched.tags ? (formik.errors.tags as string) : ''}
                   />
-                  <Box>
-                    <FormLabel>
-                      Course preview image{' '}
-                      <Box as={'span'} color={'red.300'}>
-                        *
-                      </Box>
-                    </FormLabel>
-                    <FileUploader
-                      handleChange={handleChange}
-                      name='file'
-                      types={['JPG', 'PNG', 'GIF']}
-                      style={{ minWidth: '100%' }}
-                    />
-                    {errorFIle && (
-                      <Text mt={2} fontSize='14px' color='red.500'>
-                        {errorFIle}
-                      </Text>
-                    )}
-                  </Box>
+                  <FormLabel>
+                    Course preview image{' '}
+                    <Box as={'span'} color={'red.300'}>
+                      *
+                    </Box>
+                  </FormLabel>
+                  {file ? (
+                    <Box pos={"relative"} w={"full"} h={200}>
+                      <Image
+                        src={
+                          typeof file === 'string'
+                            ? loadImage(file as string)
+                            : URL.createObjectURL(file)
+                        }
+                        alt={'preview image'}
+                        style={{ objectFit: 'cover', borderRadius: '8px' }}
+                      />
+                      <Icon
+                        as={FaTimes}
+                        fontSize={20}
+                        pos={'absolute'}
+                        right={2}
+                        top={2}
+                        cursor={'pointer'}
+                        onClick={() => setFile(null)}
+                        color={"white"}
+                      />
+                    </Box>
+                  ) : (
+                    <Box>
+
+                      <FileUploader
+                        handleChange={handleChange}
+                        name='file'
+                        types={['JPG', 'PNG', 'GIF']}
+                        style={{ minWidth: '100%' }}
+                      />
+                      {errorFIle && (
+                        <Text mt={2} fontSize='14px' color='red.500'>
+                          {errorFIle}
+                        </Text>
+                      )}
+                    </Box>
+                  )}
+
                 </Stack>
               </Box>
             </Flex>
-          </Form>
+          </Form >
         )}
-      </Formik>
+      </Formik >
     </>
   );
 };

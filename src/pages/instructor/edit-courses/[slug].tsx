@@ -1,6 +1,8 @@
+import { CourseType } from '@/interfaces/course.interface'
 import { withInstructorLayout } from '@/layouts/instructor'
 import { EditDetailedCoursePage } from '@/page-component'
-import { NextPage } from 'next'
+import { InstructorService } from '@/services/iInstructor.service'
+import { GetServerSideProps, NextPage } from 'next'
 
 const EditDetailedCourses: NextPage = () => {
   return (
@@ -9,3 +11,14 @@ const EditDetailedCourses: NextPage = () => {
 }
 
 export default withInstructorLayout(EditDetailedCourses)
+
+export const getServerSideProps: GetServerSideProps<CoursePageType> = async ({ req, query }) => {
+  const course = await InstructorService.getDetailedCourses(req.cookies.refresh, query.slug as string)
+  return {
+    props: { course }
+  }
+}
+
+interface CoursePageType extends Record<string, unknown> {
+  course: CourseType
+}

@@ -10,6 +10,7 @@ import { HiOutlineStatusOnline } from 'react-icons/hi';
 import { SiGoogleanalytics } from 'react-icons/si';
 import { VscOpenPreview } from 'react-icons/vsc';
 import { InstructoCoursesCardProps } from './instructor-courses-card.props';
+import { loadImage } from '@/helpers/image.helper';
 
 const InstructorEditCourseCard: FC<InstructoCoursesCardProps> = ({ item }): JSX.Element => {
   const router = useRouter();
@@ -20,7 +21,7 @@ const InstructorEditCourseCard: FC<InstructoCoursesCardProps> = ({ item }): JSX.
           <Box pos={'relative'} w={'full'} h={'300px'}>
             <Image
                 fill
-                src={item.image}
+                src={loadImage(item.previewImage)}
                 style={{ objectFit: 'cover', borderRadius: '10px' }}
                 alt={item.title}
             />

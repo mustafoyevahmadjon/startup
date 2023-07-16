@@ -1,10 +1,13 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { InstructorInitialState } from "./instructor.interface";
 import { applyInstructor } from "./instructor.action";
+import { CourseType } from "@/interfaces/course.interface";
 
 const initialState: InstructorInitialState = {
   isLoading: false,
-  error: null
+  error: null,
+  courses: [],
+  course: null,
 }
 
 export const instructorSlice = createSlice({
@@ -13,7 +16,13 @@ export const instructorSlice = createSlice({
   reducers: {
     clearInstructorError: state => {
       state.error = null
-    }
+    },
+    instructorAllCourses: (state, action: PayloadAction<CourseType[]>) => { 
+      state.courses = action.payload
+    },
+    instructorDetailedCourse: (state, action: PayloadAction<CourseType>) => { 
+      state.course = action.payload
+    },
   },
   extraReducers: builder => {
     builder.addCase(applyInstructor.pending, state => {

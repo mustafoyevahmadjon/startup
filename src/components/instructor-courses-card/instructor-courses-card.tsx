@@ -9,6 +9,7 @@ import { HiOutlineStatusOnline } from 'react-icons/hi';
 import { SiGoogleanalytics } from 'react-icons/si';
 import { VscOpenPreview } from 'react-icons/vsc';
 import { InstructoCoursesCardProps } from './instructor-courses-card.props';
+import { loadImage } from '@/helpers/image.helper';
 
 const InstructorCoursesCard: FC<InstructoCoursesCardProps> = ({ item }): JSX.Element => {
   return (
@@ -43,7 +44,7 @@ const InstructorCoursesCard: FC<InstructoCoursesCardProps> = ({ item }): JSX.Ele
       <Box w={'30%'} h={'300px'} position={'relative'}>
         <Image
           fill
-          src={item.image}
+          src={loadImage(item.previewImage)}
           alt={item.title}
           style={{ objectFit: 'cover', borderRadius: '10px' }}
         />

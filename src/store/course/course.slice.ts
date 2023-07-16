@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { createCourse } from './course.action';
 import { CourseIntialStateType } from './course.interface';
+import { CourseType } from '@/interfaces/course.interface';
 
 const initialState: CourseIntialStateType = {
 	isLoading: false,

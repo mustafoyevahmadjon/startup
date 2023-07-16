@@ -4,7 +4,7 @@ import { InstructorStudentsPageComponent } from '@/page-component'
 import { InstructorService } from '@/services/iInstructor.service'
 import { GetServerSideProps, NextPage } from 'next'
 
-const Courses: NextPage<CoursesPageType> = ({ courses }) => {
+const Courses: NextPage<CoursesPageType> = () => {
   return (
     <InstructorStudentsPageComponent />
   )
