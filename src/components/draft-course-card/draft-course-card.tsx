@@ -16,7 +16,7 @@ const DraftCourseCard: FC<DraftCourseCardProps> = ({ item, status }): JSX.Elemen
 		>
 			<Box pos={'relative'} w={'100%'} h={'200px'}>
 				<Image
-					src={item.image}
+					src={item.previewImage}
 					alt={item.title}
 					fill
 					style={{ objectFit: 'cover', borderRadius: '10px' }}
