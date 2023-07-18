@@ -1,4 +1,3 @@
-import { SubmitValuesInterface } from '@/components/instructor-manage-course/instructor-manage-course.props';
 import { CourseType } from '@/interfaces/course.interface';
 
 export interface CourseIntialStateType {
@@ -7,6 +6,11 @@ export interface CourseIntialStateType {
 
 }
 
-export interface CourseCreateBodyInterface extends SubmitValuesInterface {
+export interface CourseCreateBodyInterface extends CourseType {
+	callback: () => void;
+}
+
+export interface DeleteBodyInterface {
+	courseId: string
 	callback: () => void;
 }

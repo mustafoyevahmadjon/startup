@@ -1,15 +1,18 @@
 import SectionTitle from '@/components/section-title/section-title';
 import { Divider, useToast } from "@chakra-ui/react"
 import { InstructorManageCourse } from '@/components';
-import { SubmitValuesInterface } from '@/components/instructor-manage-course/instructor-manage-course.props';
 import { useActions } from '@/hooks/useActions';
+import { CourseType } from '@/interfaces/course.interface';
+import { useRouter } from 'next/router';
 
 
 
 const CreateCourseComponent = () => {
   const { createCourse } = useActions()
   const toast = useToast()
-  const onSubmit = (data: SubmitValuesInterface) => {
+  const router = useRouter()
+
+  const onSubmit = (data: CourseType) => {
     createCourse({
       ...data, callback: () => {
         toast({
@@ -18,6 +21,7 @@ const CreateCourseComponent = () => {
           position: "top-right",
           isClosable: true,
         })
+        router.push("/instructor/courses")
       }
     });
   }

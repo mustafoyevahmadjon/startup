@@ -15,7 +15,6 @@ import TextAreaField from '../text-area-field/text-area-field';
 import TextFiled from '../text-filed/text-field';
 import {
   InstructorManageCourseProps,
-  SubmitValuesInterface,
 } from './instructor-manage-course.props';
 import { useTypedSelector } from '@/hooks/useTypedSelector';
 import { useTranslation } from 'react-i18next';
@@ -24,6 +23,7 @@ import { useActions } from '@/hooks/useActions';
 import { useRouter } from 'next/router';
 import { loadImage } from '@/helpers/image.helper';
 import { FaTimes } from 'react-icons/fa';
+import { CourseType } from '@/interfaces/course.interface';
 
 
 const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
@@ -47,11 +47,15 @@ const InstructorManageCourse = ({ submitHandler, titleBtn, courseValues }: Instr
       seterrorFIle("preview Image is required")
       return
     }
-    const formData = new FormData();
-    formData.append('image', file as File);
-    startLoading()
-    const response = await FIleService.fileUpload(formData, 'preview-image');
-    const data = { ...formValues, previewImage: response.url } as SubmitValuesInterface;
+    let imageUrl = file
+    if (typeof file !== "string") {
+      startLoading()
+      const formData = new FormData();
+      formData.append('image', file as File);
+      const response = await FIleService.fileUpload(formData, 'preview-image');
+      imageUrl = response.url
+    }
+    const data = { ...formValues, previewImage: imageUrl } as CourseType;
     submitHandler(data);
     router.push("/instructor/courses")
   };

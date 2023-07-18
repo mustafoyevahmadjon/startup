@@ -12,7 +12,6 @@ import {
 import Image from 'next/image';
 import { InstructorCoursesCard } from '@/components';
 import SectionTitle from '@/components/section-title/section-title';
-import { courses } from '@/config/constants';
 import { useTypedSelector } from '@/hooks/useTypedSelector';
 
 const CoursesPageComponent = () => {
