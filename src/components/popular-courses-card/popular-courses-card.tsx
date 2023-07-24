@@ -8,7 +8,7 @@ import { PopularCoursesCardProps } from './popular-courses-card.props';
 const PopularCoursesCard = ({ item }: PopularCoursesCardProps) => {
 	return (
 		<Stack key={item.title} spacing={3} p={3} cursor={'pointer'}>
-			<Image src={item.previewImage} alt={item.title} objectFit={'cover'} h={'210px'} w={'full'} borderRadius={'lg'} />
+			<Image src={item.image} alt={item.title} objectFit={'cover'} h={'210px'} w={'full'} borderRadius={'lg'} />
 			<HStack>
 				<Text color={'#e59819'}>{item.reviewAvarage.toFixed(1)}</Text>
 				<ReactStars edit={false} value={item.reviewAvarage} color2={'#e59819'} />

@@ -16,7 +16,7 @@ const AllCoursesCard = ({ course }: AllCoursesCardProps) => {
         <Box py={4}>
           <Flex gap={4} direction={{ base: 'column', md: 'row' }}>
             <Image
-                src={course.previewImage}
+                src={course.image}
                 alt={course.title}
                 w={{ base: 'full', md: '250px' }}
                 onClick={onDetailedCourse}

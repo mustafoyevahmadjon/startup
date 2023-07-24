@@ -44,7 +44,7 @@ const InstructorCoursesCard: FC<InstructoCoursesCardProps> = ({ item }): JSX.Ele
       <Box w={'30%'} h={'300px'} position={'relative'}>
         <Image
           fill
-          src={loadImage(item.previewImage)}
+          src={loadImage(item.image)}
           alt={item.title}
           style={{ objectFit: 'cover', borderRadius: '10px' }}
         />

@@ -27,9 +27,7 @@ const InstructorEditCourseCard: FC<InstructoCoursesCardProps> = ({ item }): JSX.
           toast({ title: "successfully deleted ", description: item.title, position: "top-right", isClosable: true })
         }
       })
-      setTimeout(() => {
-        router.reload()
-      }, 1500)
+      router.replace(router.asPath)
     }
   }
 
@@ -39,7 +37,7 @@ const InstructorEditCourseCard: FC<InstructoCoursesCardProps> = ({ item }): JSX.
         <Box pos={'relative'} w={'full'} h={'300px'}>
           <Image
             fill
-            src={loadImage(item.previewImage)}
+            src={loadImage(item.image)}
             style={{ objectFit: 'cover', borderRadius: '10px' }}
             alt={item.title}
           />

@@ -55,7 +55,7 @@ const InstructorManageCourse = ({ submitHandler, titleBtn, courseValues }: Instr
       const response = await FIleService.fileUpload(formData, 'preview-image');
       imageUrl = response.url
     }
-    const data = { ...formValues, previewImage: imageUrl } as CourseType;
+    const data = { ...formValues, image: imageUrl } as CourseType;
     submitHandler(data);
     router.push("/instructor/courses")
   };
@@ -63,7 +63,7 @@ const InstructorManageCourse = ({ submitHandler, titleBtn, courseValues }: Instr
   useEffect(() => {
     if (courseValues) {
       setinitialValues(courseValues)
-      setFile(courseValues.previewImage)
+      setFile(courseValues.image)
     }
   }, [courseValues])
 

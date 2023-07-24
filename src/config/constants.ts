@@ -175,19 +175,19 @@ export const coursesFilter = [
 
 export const courses: CourseType[] = [
     {
-        image: 'https://media.graphassets.com/3gf746AKRbWNjB8OCoEB',
-        title: 'JavaScript full course',
-        slug: 'javascript',
-        lessonCount: 96,
-        totalHour: 13.6,
+        image: 'https://media.graphassets.com/54vR0DStGoFuZBVkFwWQ',
+        slug: 'vuejs',
+        title: 'VueJS full course',
+        lessonCount: 30,
+        totalHour: 10.6,
         level: 'Beginner',
         price: 20,
         reviewAvarage: 4.5,
-        reviewCount: 200,
+        reviewCount: 250,
         author: {
-            firstName: 'Zafar',
+            firstName: 'Samar',
             lastName: 'Badriddinov',
-            avatar: 'https://media.graphassets.com/H2ZxmIbvTTKOuxHlCfNx',
+            avatar: 'https://media.graphassets.com/NfxHACAlR4CkvdhnB3gs',
         },
     },
     {

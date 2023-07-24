@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { createCourse, deleteCourse, editCourse } from './course.action';
+import { activateCourse, createCourse, deleteCourse, draftCourse, editCourse } from './course.action';
 import { CourseIntialStateType } from './course.interface';
 import { CourseType } from '@/interfaces/course.interface';
 
@@ -21,6 +21,7 @@ export const courseSlice = createSlice({
 	},
 	extraReducers: builder => {
 		builder
+
 			.addCase(createCourse.pending, state => {
 				state.isLoading = true;
 				state.error = null;
@@ -33,6 +34,7 @@ export const courseSlice = createSlice({
 				state.isLoading = false;
 				state.error = payload;
 			})
+
 			.addCase(deleteCourse.pending, state => {
 				state.isLoading = true;
 				state.error = null;
@@ -45,6 +47,33 @@ export const courseSlice = createSlice({
 				state.isLoading = false;
 				state.error = payload;
 			})
+
+			.addCase(activateCourse.pending, state => {
+				state.isLoading = true;
+				state.error = null;
+			})
+			.addCase(activateCourse.fulfilled, state => {
+				state.isLoading = false;
+				state.error = null;
+			})
+			.addCase(activateCourse.rejected, (state, { payload }) => {
+				state.isLoading = false;
+				state.error = payload;
+			})
+
+			.addCase(draftCourse.pending, state => {
+				state.isLoading = true;
+				state.error = null;
+			})
+			.addCase(draftCourse.fulfilled, state => {
+				state.isLoading = false;
+				state.error = null;
+			})
+			.addCase(draftCourse.rejected, (state, { payload }) => {
+				state.isLoading = false;
+				state.error = payload;
+			})
+
 	},
 });
 
