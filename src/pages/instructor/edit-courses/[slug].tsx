@@ -13,7 +13,7 @@ const EditDetailedCourses: NextPage = () => {
 export default withInstructorLayout(EditDetailedCourses)
 
 export const getServerSideProps: GetServerSideProps<CoursePageType> = async ({ req, query }) => {
-  const course = await InstructorService.getDetailedCourses(req.cookies.refresh, query.slug as string)
+  const course = await InstructorService.getDetailedCourse(req.cookies.refresh, query.slug as string)
   return {
     props: { course }
   }

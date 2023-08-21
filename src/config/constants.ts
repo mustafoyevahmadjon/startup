@@ -26,7 +26,7 @@ import EngIcons from "@/icons/eng";
 import UzbIcons from "@/icons/uzb";
 import TurkIcon from "@/icons/turk";
 import RusIcon from "@/icons/rus";
-import { CourseType } from "@/interfaces/course.interface";
+import { CourseType } from '@/interfaces/course.interface';
 
 export const navigation = [
     {
@@ -113,8 +113,15 @@ export const categories = [
         icon: LaptopIcons,
     },
 ];
+export const trustedCompeny = [
+    AiFillAmazonCircle,
+    SiAmd,
+    SiCisco,
+    FaApplePay,
+    SiLogitech,
+    SiSpotify,
+];
 
-export const trustedCompeny = [AiFillAmazonCircle, SiAmd, SiCisco, FaApplePay, SiLogitech, SiSpotify];
 
 export const language = [
     { nativeLng: 'English', lng: 'en', icon: EngIcons },
@@ -174,16 +181,32 @@ export const coursesFilter = [
 ];
 
 export const courses: CourseType[] = [
+    // requirements: string[];
+    // learn: string[];
+    // exerpt: string;
+    // image: string
+    // description: string;
+    // category: string;
+    // _id: string;
+    // isActive: boolean
     {
-        image: 'https://media.graphassets.com/54vR0DStGoFuZBVkFwWQ',
-        slug: 'vuejs',
-        title: 'VueJS full course',
-        lessonCount: 30,
-        totalHour: 10.6,
+        image: 'https://media.graphassets.com/3gf746AKRbWNjB8OCoEB',
+        title: 'JavaScript full course',
+        slug: 'javascript',
+        lessonCount: 96,
+        totalHour: 13.6,
         level: 'Beginner',
         price: 20,
         reviewAvarage: 4.5,
-        reviewCount: 250,
+        reviewCount: 200,
+        tags: ["frontend"],
+        requirements: [""],
+        learn: [""],
+        exerpt: "",
+        description: "",
+        category: "",
+        _id: "",
+        isActive: false,
         author: {
             firstName: 'Samar',
             lastName: 'Badriddinov',
@@ -192,18 +215,26 @@ export const courses: CourseType[] = [
     },
     {
         image: 'https://media.graphassets.com/54vR0DStGoFuZBVkFwWQ',
-        title: 'VueJS full course',
         slug: 'vuejs',
+        title: 'VueJS full course',
         lessonCount: 30,
         totalHour: 10.6,
         level: 'Beginner',
         price: 20,
         reviewAvarage: 4.5,
         reviewCount: 250,
+        tags: ["frontend"],
+        requirements: [""],
+        learn: [""],
+        exerpt: "",
+        description: "",
+        category: "",
+        _id: "",
+        isActive: false,
         author: {
-            firstName: 'Zafar',
+            firstName: 'Samar',
             lastName: 'Badriddinov',
-            avatar: 'https://media.graphassets.com/H2ZxmIbvTTKOuxHlCfNx',
+            avatar: 'https://media.graphassets.com/NfxHACAlR4CkvdhnB3gs',
         },
     },
     {
@@ -216,26 +247,41 @@ export const courses: CourseType[] = [
         price: 20,
         reviewAvarage: 4.5,
         reviewCount: 150,
+        tags: ["frontend"],
+        requirements: [""],
+        learn: [""],
+        exerpt: "",
+        description: "",
+        category: "",
+        _id: "",
+        isActive: false,
         author: {
-            firstName: 'Zafar',
+            firstName: 'Samar',
             lastName: 'Badriddinov',
-            avatar: 'https://media.graphassets.com/H2ZxmIbvTTKOuxHlCfNx',
+            avatar: 'https://media.graphassets.com/NfxHACAlR4CkvdhnB3gs',
         },
     },
     {
         image: 'https://media.graphassets.com/xactyo8TtyTIkAcMWvSm',
-        title: 'VueX full course',
         slug: 'vuex',
+        title: 'VueX full course',
         lessonCount: 120,
         totalHour: 24.6,
         level: 'Beginner',
         price: 20,
         reviewAvarage: 5,
-        reviewCount: 250,
+        reviewCount: 250, tags: ["frontend"],
+        requirements: [""],
+        learn: [""],
+        exerpt: "",
+        description: "",
+        category: "",
+        _id: "",
+        isActive: false,
         author: {
-            firstName: 'Zafar',
+            firstName: 'Samar',
             lastName: 'Badriddinov',
-            avatar: 'https://media.graphassets.com/H2ZxmIbvTTKOuxHlCfNx',
+            avatar: 'https://media.graphassets.com/NfxHACAlR4CkvdhnB3gs',
         },
     },
     {
@@ -248,10 +294,18 @@ export const courses: CourseType[] = [
         price: 20,
         reviewAvarage: 4.9,
         reviewCount: 120,
+        tags: ["frontend"],
+        requirements: [""],
+        learn: [""],
+        exerpt: "",
+        description: "",
+        category: "",
+        _id: "",
+        isActive: false,
         author: {
-            firstName: 'Zafar',
+            firstName: 'Samar',
             lastName: 'Badriddinov',
-            avatar: 'https://media.graphassets.com/H2ZxmIbvTTKOuxHlCfNx',
+            avatar: 'https://media.graphassets.com/NfxHACAlR4CkvdhnB3gs',
         },
     },
     {
@@ -264,10 +318,18 @@ export const courses: CourseType[] = [
         price: 20,
         reviewAvarage: 5,
         reviewCount: 250,
+        tags: ["frontend"],
+        requirements: [""],
+        learn: [""],
+        exerpt: "",
+        description: "",
+        category: "",
+        _id: "",
+        isActive: false,
         author: {
-            firstName: 'Zafar',
+            firstName: 'Samar',
             lastName: 'Badriddinov',
-            avatar: 'https://media.graphassets.com/H2ZxmIbvTTKOuxHlCfNx',
+            avatar: 'https://media.graphassets.com/NfxHACAlR4CkvdhnB3gs',
         },
     },
 ];

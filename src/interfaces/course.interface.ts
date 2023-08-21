@@ -8,14 +8,14 @@ export interface CourseType {
     reviewAvarage: number;
     reviewCount: number;
     author: AuthorType;
-    tags?: string[];
-    requirements?: string[];
-    learn?: string[];
-    exerpt?: string;
+    tags: string[];
+    requirements: string[];
+    learn: string[];
+    exerpt: string;
     image: string
-    description?: string;
-    category?: string;
-    _id?: string;
+    description: string;
+    category: string;
+    _id: string;
     isActive: boolean
 }
 export interface AuthorType {

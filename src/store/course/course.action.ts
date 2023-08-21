@@ -33,7 +33,7 @@ export const deleteCourse = createAsyncThunk<'success', ByIdBodyinterface>(
 	'course/edit',
 	async (body, thunkApi) => {
 		try {
-			const response = await CourseService.deleteCourse(body.courseId);
+			const response = await CourseService.deleteCourse(body.courseId as string);
 			body.callback();
 			return response;
 		} catch (error) {
@@ -46,7 +46,7 @@ export const activateCourse = createAsyncThunk<'success', ByIdBodyinterface>(
 	'course/activate',
 	async (body, thunkApi) => {
 		try {
-			const response = await CourseService.activateCourse(body.courseId);
+			const response = await CourseService.activateCourse(body.courseId as string);
 			body.callback();
 			return response;
 		} catch (error) {
@@ -59,7 +59,7 @@ export const draftCourse = createAsyncThunk<'success', ByIdBodyinterface>(
 	'course/draft',
 	async (body, thunkApi) => {
 		try {
-			const response = await CourseService.draftCourse(body.courseId);
+			const response = await CourseService.draftCourse(body.courseId as string);
 			body.callback();
 			return response;
 		} catch (error) {
