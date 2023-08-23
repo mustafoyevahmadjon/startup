@@ -17,10 +17,10 @@ export const instructorSlice = createSlice({
     clearInstructorError: state => {
       state.error = null
     },
-    instructorAllCourses: (state, action: PayloadAction<CourseType[]>) => { 
+    instructorAllCourses: (state, action: PayloadAction<CourseType[]>) => {
       state.courses = action.payload
     },
-    instructorDetailedCourse: (state, action: PayloadAction<CourseType>) => { 
+    instructorDetailedCourse: (state, action: PayloadAction<CourseType>) => {
       state.course = action.payload
     },
   },
