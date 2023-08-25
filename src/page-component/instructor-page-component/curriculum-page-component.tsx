@@ -19,31 +19,40 @@ import {
   useToast,
 } from '@chakra-ui/react';
 import Image from 'next/image';
+import { useEffect, useState } from 'react';
 import { BsFillPlusCircleFill } from 'react-icons/bs';
-import { SectionAccordion, SectionForm } from '@/components';
-import SectionTitle from '@/components/section-title/section-title';
-import { useTypedSelector } from '@/hooks/useTypedSelector';
-import { useEffect } from "react"
-import { useRouter } from 'next/router';
-import { useActions } from '@/hooks/useActions';
+import { SectionAccordion, SectionForm } from 'src/components';
+import SectionTitle from 'src/components/section-title/section-title';
+import { useActions } from 'src/hooks/useActions';
+import { useTypedSelector } from 'src/hooks/useTypedSelector';
 
 const CurriculumPageComponent = () => {
+  const [sectionTitle, setSectionTitle] = useState<{ title: string; id: string } | null>({
+    title: '',
+    id: '',
+  });
 
   const { course } = useTypedSelector(state => state.instructor);
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const router = useRouter()
-  const toast = useToast()
-  const { getSection } = useActions()
-  const { pendingSection, sections } = useTypedSelector(state => state.section)
+  const { getSection } = useActions();
+  const { pendingSection, sections } = useTypedSelector(state => state.section);
+  const toast = useToast();
 
   useEffect(() => {
-    getSection({
-      courseId: course?._id,
-      callback: () => {
-        toast({ title: 'Successfully get sections', position: 'top-right', isClosable: true });
-      }
-    })
-  }, [course])
+    if (course?._id) {
+      getSection({
+        courseId: course?._id,
+        callback: () => {
+          toast({ title: 'Successfully get sections', position: 'top-right', isClosable: true });
+        },
+      });
+    }
+  }, [course]);
+
+  const onCreateSection = () => {
+    onOpen();
+    setSectionTitle(null);
+  };
 
   return (
     <>
@@ -65,7 +74,13 @@ const CurriculumPageComponent = () => {
         <CardBody>
           <Flex mb={5} justify={'space-between'} align={'center'}>
             <Text fontSize={'2xl'}>Create section</Text>
-            <Icon as={BsFillPlusCircleFill} w={6} h={6} cursor={'pointer'} onClick={onOpen} />
+            <Icon
+              as={BsFillPlusCircleFill}
+              w={6}
+              h={6}
+              cursor={'pointer'}
+              onClick={onCreateSection}
+            />
           </Flex>
           {pendingSection ? (
             <Stack>
@@ -76,7 +91,12 @@ const CurriculumPageComponent = () => {
           ) : (
             <Accordion allowToggle>
               {sections.map(section => (
-                <SectionAccordion key={section.title} section={section} />
+                <SectionAccordion
+                  key={section.title}
+                  section={section}
+                  setSectionTitle={setSectionTitle}
+                  onOpen={onOpen}
+                />
               ))}
             </Accordion>
           )}
@@ -90,12 +110,12 @@ const CurriculumPageComponent = () => {
           <ModalCloseButton />
           <Divider />
           <ModalBody pb={5}>
-            <SectionForm onClose={onClose} />
+            <SectionForm onClose={onClose} values={sectionTitle} />
           </ModalBody>
         </ModalContent>
       </Modal>
     </>
-  )
-}
+  );
+};
 
-export default CurriculumPageComponent
+export default CurriculumPageComponent;

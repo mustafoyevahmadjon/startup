@@ -1,15 +1,15 @@
-import { SectionType } from "@/interfaces/instructor.interface"
+import { SectionType } from 'src/interfaces/instructor.interface';
 
 export interface SectionInitialStateType {
-  isLoading: boolean
-  error: string | null | unknown
-  sections: SectionType[]
-  pendingSection: boolean
+  isLoading: boolean;
+  pendingSection: boolean;
+  error: string | null | unknown;
+  sections: SectionType[];
 }
 
 export interface SectionBodyType {
-  title?: string
-  courseId?: string
-  sectionId?: string
-  callback: () => void
+  title?: string;
+  courseId?: string;
+  sectionId?: string;
+  callback: () => void;
 }

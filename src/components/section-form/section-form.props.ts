@@ -1,3 +1,7 @@
 export interface SectionFormProps {
-  onClose: () => void
+  onClose: () => void;
+  values?: {
+    title: string;
+    id: string;
+  } | null;
 }

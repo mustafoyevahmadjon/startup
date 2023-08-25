@@ -1,46 +1,46 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import { SectionBodyType } from "./section.interface";
-import { SectionService } from "@/services/section.service";
-import { errorCatch } from "@/helpers/api.helpers";
-import { SectionType } from "@/interfaces/instructor.interface";
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import { errorCatch } from 'src/helpers/api.helpers';
+import { SectionType } from 'src/interfaces/instructor.interface';
+import { SectionService } from 'src/services/section.service';
+import { SectionBodyType } from './section.interface';
 
-export const createSection = createAsyncThunk<"success", SectionBodyType>(
+export const createSection = createAsyncThunk<'success', SectionBodyType>(
   'section/create',
   async (body, thunkApi) => {
     try {
       const response = await SectionService.createSection(body);
-      body.callback()
-      return response
+      body.callback();
+      return response;
     } catch (error) {
       return thunkApi.rejectWithValue(errorCatch(error));
     }
-  },
+  }
 );
 
-export const deleteSection = createAsyncThunk<"success", SectionBodyType>(
+export const deleteSection = createAsyncThunk<'success', SectionBodyType>(
   'section/delete',
   async (body, thunkApi) => {
     try {
       const response = await SectionService.deleteSection(body);
-      body.callback()
-      return response
+      body.callback();
+      return response;
     } catch (error) {
       return thunkApi.rejectWithValue(errorCatch(error));
     }
-  },
+  }
 );
 
-export const editSection = createAsyncThunk<"success", SectionBodyType>(
+export const editSection = createAsyncThunk<'success', SectionBodyType>(
   'section/edit',
   async (body, thunkApi) => {
     try {
       const response = await SectionService.editSection(body);
-      body.callback()
-      return response
+      body.callback();
+      return response;
     } catch (error) {
       return thunkApi.rejectWithValue(errorCatch(error));
     }
-  },
+  }
 );
 
 export const getSection = createAsyncThunk<SectionType[], SectionBodyType>(
@@ -48,10 +48,10 @@ export const getSection = createAsyncThunk<SectionType[], SectionBodyType>(
   async (body, thunkApi) => {
     try {
       const response = await SectionService.getSection(body);
-      body.callback()
-      return response
+      body.callback();
+      return response;
     } catch (error) {
       return thunkApi.rejectWithValue(errorCatch(error));
     }
-  },
+  }
 );

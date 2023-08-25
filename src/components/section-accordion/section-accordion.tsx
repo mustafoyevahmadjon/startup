@@ -13,26 +13,23 @@ import {
 } from '@chakra-ui/react';
 import { AiOutlineMenu } from 'react-icons/ai';
 import { MdDelete, MdEdit } from 'react-icons/md';
+import { useActions } from 'src/hooks/useActions';
+import { useTypedSelector } from 'src/hooks/useTypedSelector';
+import ErrorAlert from '../error-alert/error-alert';
 import LessonAccordionItem from '../lesson-accordion-item/lesson-accordion-item';
 import LessonForm from '../lesson-form/lesson-form';
-import { useActions } from '@/hooks/useActions';
-import { useTypedSelector } from '@/hooks/useTypedSelector';
-import ErrorAlert from '../error-alert/error-alert';
-import { useRouter } from 'next/router';
-import { SectionAccordionPrps } from './sectiom-accordion.props';
+import { SectionAccordionProps } from './section-accordion.props';
 
-
-const SectionAccordion = ({ section }: SectionAccordionPrps) => {
-  
+const SectionAccordion = ({ section, setSectionTitle, onOpen }: SectionAccordionProps) => {
   const { isOpen, onToggle } = useDisclosure();
-  const { deleteSection, clearSectionError, getSection } = useActions()
-  const { error, isLoading } = useTypedSelector(state => state.section)
-  const toast = useToast()
-  const { course } = useTypedSelector(state => state.instructor)
-  const router = useRouter()
+  const { deleteSection, clearSectionError, getSection } = useActions();
+  const { error, isLoading } = useTypedSelector(state => state.section);
+  const { course } = useTypedSelector(state => state.instructor);
+  const toast = useToast();
 
   const onDelete = () => {
-    const isAgree = confirm("are you sure")
+    const isAgree = confirm('Are you sure?');
+
     if (isAgree) {
       deleteSection({
         sectionId: section._id,
@@ -43,22 +40,28 @@ const SectionAccordion = ({ section }: SectionAccordionPrps) => {
             courseId: course?._id,
             callback: () => { },
           });
-        }
-      })
+        },
+      });
     }
-  }
+  };
+
+  const onEditSection = () => {
+    onOpen();
+    setSectionTitle({ title: section.title, id: section._id });
+  };
 
   return (
     <AccordionItem>
       <>{error && <ErrorAlert title={error as string} clearHandler={clearSectionError} />}</>
-      <AccordionButton h={14} p={2} fontWeight={'bold'} cursor={isLoading ? "progress" : "pointer"}>
+
+      <AccordionButton h={14} p={2} fontWeight={'bold'} cursor={isLoading ? 'progress' : 'pointer'}>
         <Flex w={'100%'} align={'center'} justify={'space-between'}>
           <Flex align={'center'} gap={2}>
             <Icon as={AiOutlineMenu} w={5} h={5} />
             {section.title}
           </Flex>
           <Flex fontSize={'15px'} align={'center'} gap={3}>
-            <Icon as={MdEdit} w={5} h={5} />
+            <Icon as={MdEdit} w={5} h={5} onClick={onEditSection} />
             <Icon as={MdDelete} w={5} h={5} onClick={onDelete} />
             <AccordionIcon />
           </Flex>
@@ -83,7 +86,7 @@ const SectionAccordion = ({ section }: SectionAccordionPrps) => {
         </Collapse>
       </AccordionPanel>
     </AccordionItem>
-  )
-}
+  );
+};
 
-export default SectionAccordion
+export default SectionAccordion;
