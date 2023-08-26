@@ -19,6 +19,8 @@ import ErrorAlert from '../error-alert/error-alert';
 import LessonAccordionItem from '../lesson-accordion-item/lesson-accordion-item';
 import LessonForm from '../lesson-form/lesson-form';
 import { SectionAccordionProps } from './section-accordion.props';
+import { manageLessonValues } from '@/validations/course.validation';
+import { LessonType } from '@/interfaces/instructor.interface';
 
 const SectionAccordion = ({ section, setSectionTitle, onOpen }: SectionAccordionProps) => {
   const { isOpen, onToggle } = useDisclosure();
@@ -69,7 +71,7 @@ const SectionAccordion = ({ section, setSectionTitle, onOpen }: SectionAccordion
       </AccordionButton>
       <AccordionPanel pb={4}>
         {section.lessons.map(lesson => (
-          <LessonAccordionItem key={lesson.name} lesson={lesson} />
+          <LessonAccordionItem key={lesson._id} lesson={lesson} sectionId={section._id} />
         ))}
         <Center>
           <Button
@@ -82,7 +84,7 @@ const SectionAccordion = ({ section, setSectionTitle, onOpen }: SectionAccordion
           </Button>
         </Center>
         <Collapse in={isOpen} animateOpacity>
-          <LessonForm />
+          <LessonForm sectionId={section._id} values={manageLessonValues as LessonType} />
         </Collapse>
       </AccordionPanel>
     </AccordionItem>
