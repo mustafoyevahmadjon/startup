@@ -12,4 +12,6 @@ export interface SectionBodyType {
   courseId?: string;
   sectionId?: string;
   callback: () => void;
+  lessons?: string[];
+  sections?: string[]
 }

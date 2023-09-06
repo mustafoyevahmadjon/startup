@@ -46,3 +46,13 @@ body {
   height: 180px !important;
   border-color: 1px dashed #375896;
 }
+
+.react-multiple-carousel__arrow--left {
+  margin-top: calc(-5%);
+  left: calc(25px);
+}
+
+.react-multiple-carousel__arrow--right {
+  margin-top: calc(-5%);
+  right: calc(25px);
+}

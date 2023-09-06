@@ -24,8 +24,10 @@ const LessonForm = ({ values, sectionId }: LessonFormProps) => {
   const toast = useToast();
 
   const onSubmit = (formValues: FormikValues) => {
+    console.log(values);
+    
     const data = formValues as LessonType;
-    if (values) {
+    if (values?._id) {
       editLesson({
         lessonId: values._id,
         ...data,
