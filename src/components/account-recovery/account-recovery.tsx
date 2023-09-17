@@ -20,7 +20,7 @@ import { AccountRecoveryProps } from './account-recovery.props';
 import { Form, Formik } from 'formik';
 import { AuthValidation } from '@/validations/auth.validation';
 import ErrorAlert from '../error-alert/error-alert';
-import TextField from '../text-filed/text-field';
+import TextField from '../text-field/text-field';
 import { useActions } from '@/hooks/useActions';
 import { useTypedSelector } from '@/hooks/useTypedSelector';
 

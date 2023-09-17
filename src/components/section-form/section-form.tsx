@@ -6,30 +6,26 @@ import { useActions } from 'src/hooks/useActions';
 import { useTypedSelector } from 'src/hooks/useTypedSelector';
 import { CourseValidation } from 'src/validations/course.validation';
 import ErrorAlert from '../error-alert/error-alert';
-import TextFiled from '../text-filed/text-field';
+import TextFiled from '../text-field/text-field';
 import { SectionFormProps } from './section-form.props';
 
 const SectionForm = ({ onClose, values }: SectionFormProps) => {
 	const [initialValues, setInitialValues] = useState<{ title: string }>({ title: '' });
 
-	const { createSection, clearSectionError, getSection, editSection } = useActions();
+	const { createSection, clearSectionError, editSection } = useActions();
 	const { error, isLoading } = useTypedSelector(state => state.section);
 	const { course } = useTypedSelector(state => state.instructor);
 	const { t } = useTranslation();
 	const toast = useToast();
 
 	const onSubmit = (formValues: FormikValues) => {
-		if (values) {
+		if (values?.id) {
 			editSection({
 				sectionId: values.id,
 				title: formValues.title,
 				callback: () => {
 					toast({ title: 'Successfully edited section', position: 'top-right', isClosable: true });
 					onClose();
-					getSection({
-						courseId: course?._id,
-						callback: () => { },
-					});
 				},
 			});
 		} else {
@@ -39,10 +35,6 @@ const SectionForm = ({ onClose, values }: SectionFormProps) => {
 				callback: () => {
 					toast({ title: 'Successfully created section', position: 'top-right', isClosable: true });
 					onClose();
-					getSection({
-						courseId: course?._id,
-						callback: () => { },
-					});
 				},
 			});
 		}

@@ -26,7 +26,7 @@ import { DragEvent } from 'react';
 
 const SectionAccordion = ({ section, setSectionTitle, onOpen, sectionIdx }: SectionAccordionProps) => {
   const { isOpen, onToggle } = useDisclosure();
-  const { deleteSection, clearSectionError, getSection, dragSection } = useActions();
+  const { deleteSection, clearSectionError, dragSection } = useActions();
   const { error, isLoading, sections } = useTypedSelector(state => state.section);
   const { course } = useTypedSelector(state => state.instructor);
   const toast = useToast();
@@ -40,10 +40,6 @@ const SectionAccordion = ({ section, setSectionTitle, onOpen, sectionIdx }: Sect
         courseId: course?._id,
         callback: () => {
           toast({ title: 'Successfully deleted section', position: 'top-right', isClosable: true });
-          getSection({
-            courseId: course?._id,
-            callback: () => { },
-          });
         },
       });
     }
@@ -62,16 +58,11 @@ const SectionAccordion = ({ section, setSectionTitle, onOpen, sectionIdx }: Sect
     const movingSectionIndex = Number(e.dataTransfer.getData("sectionIdx"))
     const allSections = [...sections]
     const movingItem = allSections[movingSectionIndex]
-    const editedIdx = allSections.map(c => c._id)
     allSections.splice(movingSectionIndex, 1)
     allSections.splice(sectionIdx, 0, movingItem)
+    const editedIdx = allSections.map(c => c._id)
     dragSection({
-      sections: editedIdx, courseId: course?._id, callback() {
-        getSection({
-          courseId: course?._id,
-          callback: () => { },
-        });
-      },
+      sections: editedIdx, courseId: course?._id, callback: () => { },
     })
   }
 
@@ -110,7 +101,7 @@ const SectionAccordion = ({ section, setSectionTitle, onOpen, sectionIdx }: Sect
           </Button>
         </Center>
         <Collapse in={isOpen} animateOpacity>
-          <LessonForm sectionId={section._id} values={manageLessonValues as LessonType} />
+          <LessonForm sectionId={section._id} values={manageLessonValues as LessonType} onToggle={onToggle} />
         </Collapse>
       </AccordionPanel>
     </AccordionItem>

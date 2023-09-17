@@ -4,8 +4,8 @@ import { useTranslation } from 'react-i18next'
 import { teachValues } from '@/config/constants';
 import { FC } from 'react';
 import { LaunchCourseIcon, PlanCurriculumIcon, RecordVideoIcon } from '@/icons';
-import { Form, Formik, FormikConfig } from 'formik';
-import TextField from '@/components/text-filed/text-field';
+import { Form, Formik } from 'formik';
+import TextField from '@/components/text-field/text-field';
 import { GoVerified } from 'react-icons/go';
 import { InstructorValidation } from '@/validations/instructor.validation';
 import { useActions } from '@/hooks/useActions';

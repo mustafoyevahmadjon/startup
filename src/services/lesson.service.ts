@@ -11,7 +11,7 @@ export const LessonService = {
 
     async deleteLesson(body: LessonBodyType) {
         const response = await $axios.delete(
-            `${getLessonUrl('delete')}/${body.lessonId}/${body.courseId}`
+            `${getLessonUrl('delete')}/${body.lessonId}/${body.sectionId}`
         );
 
         return response.data;

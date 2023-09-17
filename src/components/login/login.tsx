@@ -20,7 +20,7 @@ import { useTypedSelector } from '@/hooks/useTypedSelector';
 import { Form, Formik } from 'formik';
 import { AuthValidation } from '@/validations/auth.validation';
 import ErrorAlert from '../error-alert/error-alert';
-import TextField from '../text-filed/text-field';
+import TextField from '../text-field/text-field';
 import { InterfaceEmailAndPassword } from '@/store/user/user.interface';
 import { useRouter } from 'next/router';
 

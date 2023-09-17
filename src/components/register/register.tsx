@@ -20,7 +20,7 @@ import { useTypedSelector } from '@/hooks/useTypedSelector';
 import { InterfaceEmailAndPassword } from '@/store/user/user.interface';
 import { AuthValidation } from '@/validations/auth.validation';
 import ErrorAlert from '../error-alert/error-alert';
-import TextFiled from '../text-filed/text-field';
+import TextFiled from '../text-field/text-field';
 import { RegisterProps } from './register.props';
 
 const Register = ({ onNavigateStateComponent }: RegisterProps) => {

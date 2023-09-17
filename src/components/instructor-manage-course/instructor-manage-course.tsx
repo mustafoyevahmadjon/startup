@@ -12,7 +12,7 @@ import { CourseValidation, manageCourseValues } from '@/validations/course.valid
 import SelectField from '../select-field/select-field';
 import TagField from '../tag-field/tag-field';
 import TextAreaField from '../text-area-field/text-area-field';
-import TextFiled from '../text-filed/text-field';
+import TextFiled from '../text-field/text-field';
 import {
   InstructorManageCourseProps,
 } from './instructor-manage-course.props';
