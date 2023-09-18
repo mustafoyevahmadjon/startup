@@ -2,6 +2,7 @@ import {
 	Card,
 	CardBody,
 	HStack,
+	Image,
 	Stack,
 	Tab,
 	TabList,
@@ -9,7 +10,6 @@ import {
 	TabPanels,
 	Tabs,
 } from '@chakra-ui/react';
-import Image from 'next/image';
 import { InstructorCoursesCard } from '@/components';
 import SectionTitle from '@/components/section-title/section-title';
 import { useTypedSelector } from '@/hooks/useTypedSelector';
@@ -46,14 +46,15 @@ const CoursesPageComponent = () => {
 					</TabPanel>
 					<TabPanel>
 						{courses
+							.filter(c => c.isActive)
 							.map(item => <InstructorCoursesCard key={item.slug} item={item} />)
-							.splice(1, 4)}
+						}
 					</TabPanel>
 					<TabPanel>
 						{courses
+							.filter(c => !c.isActive)
 							.map(item => <InstructorCoursesCard key={item.slug} item={item} />)
-							.reverse()
-							.splice(0, 2)}
+						}
 					</TabPanel>
 				</TabPanels>
 			</Tabs>
