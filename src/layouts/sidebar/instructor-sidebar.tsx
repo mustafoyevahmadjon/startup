@@ -60,7 +60,9 @@ const InstructorSidebar: FC<SidebarProps> = ({ toggle }): JSX.Element => {
             ))}
           </MenuList>
         </Menu>
-        <Text fontSize={"xl"} textTransform={"uppercase"} mt={10}>Instructor Admin</Text>
+        <Text fontSize={"xl"} textTransform={"uppercase"} mt={10}>
+          {t('instructor_admin', { ns: 'instructor' })}
+        </Text>
         {instructorSidebar.map((item, idx) => {
           const active = `/instructor/${router.pathname.split('/')[2]}` == `/instructor/${item.route}`;
           return (
@@ -74,7 +76,7 @@ const InstructorSidebar: FC<SidebarProps> = ({ toggle }): JSX.Element => {
               >
                 <HStack gap={2}>
                   <Icon as={item.icon} />
-                  <Text>{item.name}</Text>
+                  <Text>{t(item.name, { ns: 'instructor' })}</Text>
                 </HStack>
               </Button>
             </Link>

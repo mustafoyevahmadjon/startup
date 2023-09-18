@@ -12,11 +12,11 @@ import { VscOpenPreview } from 'react-icons/vsc';
 import { InstructoCoursesCardProps } from './instructor-courses-card.props';
 import { loadImage } from '@/helpers/image.helper';
 import { useActions } from '@/hooks/useActions';
+import { useTranslation } from 'react-i18next';
 
 const InstructorEditCourseCard: FC<InstructoCoursesCardProps> = ({ item }): JSX.Element => {
-
+  const { t } = useTranslation();
   const router = useRouter();
-
   const { deleteCourse } = useActions()
   const toast = useToast()
   const onDelete = () => {
@@ -24,7 +24,12 @@ const InstructorEditCourseCard: FC<InstructoCoursesCardProps> = ({ item }): JSX.
     if (isAgree) {
       deleteCourse({
         courseId: item._id, callback: () => {
-          toast({ title: "successfully deleted ", description: item.title, position: "top-right", isClosable: true })
+          toast({
+            title: t('successfully_deleted', { ns: 'instructor' }),
+            description: item.title,
+            position: "top-right",
+            isClosable: true
+          })
         }
       })
       router.replace(router.asPath)
@@ -49,11 +54,11 @@ const InstructorEditCourseCard: FC<InstructoCoursesCardProps> = ({ item }): JSX.
         <HStack>
           <Flex align={'center'} gap={1}>
             <Icon as={CiViewList} />
-            <Text>{item.lessonCount} lesson</Text>
+            {item.lessonCount} {t('lessons', { ns: 'courses' })}
           </Flex>
           <Flex align={'center'} gap={1}>
             <Icon as={AiOutlineClockCircle} />
-            <Text>{item.totalHour} hours</Text>
+            {item.totalHour} {t('hour', { ns: 'courses' })}
           </Flex>
           <Flex align={'center'} gap={1}>
             <Icon as={SiGoogleanalytics} />
@@ -61,20 +66,24 @@ const InstructorEditCourseCard: FC<InstructoCoursesCardProps> = ({ item }): JSX.
           </Flex>
         </HStack>
         <Divider />
-        <HStack>
-          <Button rightIcon={<VscOpenPreview />}>Preview</Button>
+        <Flex flexWrap={'wrap'} gap={5}>
+          <Button rightIcon={<VscOpenPreview />}>{t('preview', { ns: 'instructor' })}</Button>
           <Button
             rightIcon={<FiEdit2 />}
             onClick={() => router.push(`/instructor/edit-courses/${item.slug}`)}
           >
-            Edit
+            {t('edit_course', { ns: 'instructor' })}
           </Button>
-          <Button rightIcon={<BsTrash />} onClick={onDelete}>Delete</Button>
-          <Button rightIcon={<HiOutlineStatusOnline />}
+          <Button rightIcon={<BsTrash />} onClick={onDelete}>
+            {t('delete_course', { ns: 'instructor' })}
+          </Button>
+          <Button
+            rightIcon={<HiOutlineStatusOnline />}
             onClick={() => router.push(`/instructor/curriculum/${item.slug}`)}
           >
-            Curriculum</Button>
-        </HStack>
+            {t('curriculum_course', { ns: 'instructor' })}
+          </Button>
+        </Flex>
       </Stack>
     </HStack>
   );

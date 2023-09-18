@@ -24,7 +24,11 @@ const SectionForm = ({ onClose, values }: SectionFormProps) => {
 				sectionId: values.id,
 				title: formValues.title,
 				callback: () => {
-					toast({ title: 'Successfully edited section', position: 'top-right', isClosable: true });
+					toast({
+						title: t('successfully_edited', { ns: 'instructor' }),
+						position: 'top-right',
+						isClosable: true
+					});
 					onClose();
 				},
 			});
@@ -33,7 +37,11 @@ const SectionForm = ({ onClose, values }: SectionFormProps) => {
 				title: formValues.title,
 				courseId: course?._id as string,
 				callback: () => {
-					toast({ title: 'Successfully created section', position: 'top-right', isClosable: true });
+					toast({
+						title: t('successfully_created_course', { ns: 'instructor' }),
+						position: 'top-right',
+						isClosable: true
+					});
 					onClose();
 				},
 			});
@@ -63,7 +71,7 @@ const SectionForm = ({ onClose, values }: SectionFormProps) => {
 					isLoading={isLoading}
 					loadingText={`${t('loading', { ns: 'global' })}`}
 				>
-					Submit
+					{t('search_input_btn', { ns: 'courses' })}
 				</Button>
 			</Form>
 		</Formik>

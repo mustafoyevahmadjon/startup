@@ -23,6 +23,7 @@ import { SectionAccordionProps } from './section-accordion.props';
 import { manageLessonValues } from '@/validations/course.validation';
 import { LessonType } from '@/interfaces/instructor.interface';
 import { DragEvent } from 'react';
+import { useTranslation } from 'react-i18next';
 
 const SectionAccordion = ({ section, setSectionTitle, onOpen, sectionIdx }: SectionAccordionProps) => {
   const { isOpen, onToggle } = useDisclosure();
@@ -30,6 +31,7 @@ const SectionAccordion = ({ section, setSectionTitle, onOpen, sectionIdx }: Sect
   const { error, isLoading, sections } = useTypedSelector(state => state.section);
   const { course } = useTypedSelector(state => state.instructor);
   const toast = useToast();
+  const { t } = useTranslation();
 
   const onDelete = () => {
     const isAgree = confirm('Are you sure?');
@@ -39,7 +41,11 @@ const SectionAccordion = ({ section, setSectionTitle, onOpen, sectionIdx }: Sect
         sectionId: section._id,
         courseId: course?._id,
         callback: () => {
-          toast({ title: 'Successfully deleted section', position: 'top-right', isClosable: true });
+          toast({
+            title: t('successfully_deleted', { ns: 'instructor' }),
+            position: 'top-right',
+            isClosable: true
+          });
         },
       });
     }
@@ -97,7 +103,10 @@ const SectionAccordion = ({ section, setSectionTitle, onOpen, sectionIdx }: Sect
             _hover={{ textDecoration: 'underline' }}
             onClick={onToggle}
           >
-            {isOpen ? 'Close form' : 'Create lesson'}
+            {isOpen
+              ? t('close_form', { ns: 'instructor' })
+              : t('create_lesson', { ns: 'instructor' })
+            }
           </Button>
         </Center>
         <Collapse in={isOpen} animateOpacity>

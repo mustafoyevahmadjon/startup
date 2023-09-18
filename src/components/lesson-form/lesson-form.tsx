@@ -31,7 +31,7 @@ const LessonForm = ({ sectionId, values, onToggle }: LessonFormProps) => {
 				...data,
 				callback: () => {
 					toast({
-						title: 'Successfully edited lesson',
+						title: t('successfully_edited', { ns: 'instructor' }),
 						position: 'top-right',
 						isClosable: true,
 					});
@@ -45,7 +45,7 @@ const LessonForm = ({ sectionId, values, onToggle }: LessonFormProps) => {
 				sectionId,
 				callback: () => {
 					toast({
-						title: 'Successfully created new lesson',
+						title: t('successfully_created_course', { ns: 'instructor' }),
 						position: 'top-right',
 						isClosable: true,
 					});
@@ -80,12 +80,15 @@ const LessonForm = ({ sectionId, values, onToggle }: LessonFormProps) => {
 					<Form>
 						<Stack spacing={5}>
 							<>{error && <ErrorAlert title={error as string} clearHandler={clearlessonError} />}</>
-							<TextFiled name='name' label='Name' />
-							<TextAreaField name='embedVideo' label='Embed video' />
+							<TextFiled name='name' label={t('name', { ns: 'instructor' })} />
+							<TextAreaField
+								name='embedVideo'
+								label={t('embed_video', { ns: 'instructor' }) || 'Embed video'}
+							/>
 							<Flex gap={3}>
-								<TextFiled name='hour' label='Hour' type='number' />
-								<TextFiled name='minute' label='Minute' type='number' />
-								<TextFiled name='second' label='Second' type='number' />
+								<TextFiled name='hour' label={t('hour', { ns: 'instructor' })} type='number' />
+								<TextFiled name='minute' label={t('minute', { ns: 'instructor' })} type='number' />
+								<TextFiled name='second' label={t('second', { ns: 'instructor' })} type='number' />
 							</Flex>
 							<Box>
 								<ReactQuill
@@ -108,7 +111,7 @@ const LessonForm = ({ sectionId, values, onToggle }: LessonFormProps) => {
 								isLoading={isLoading}
 								loadingText={`${t('loading', { ns: 'global' })}`}
 							>
-								Submit
+								{t('search_input_btn', { ns: 'courses' })}
 							</Button>
 						</Stack>
 					</Form>
