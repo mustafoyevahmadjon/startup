@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import { FileUploader } from 'react-drag-drop-files';
 import { GiSave } from 'react-icons/gi';
 import 'react-quill/dist/quill.snow.css';
-import { courseCategory, courseLevel, coursePrice } from '@/config/constants';
+import { courseCategory, courseLevel, courseLng, coursePrice } from '@/config/constants';
 import { editorModules } from '@/config/editor.config';
 import { FIleService } from '@/services/file.service';
 import { CourseValidation, manageCourseValues } from '@/validations/course.validation';
@@ -86,26 +86,32 @@ const InstructorManageCourse = ({ submitHandler, titleBtn, courseValues }: Instr
                     height={'150px'}
                     label={t('excerpt', { ns: 'instructor' }) || 'Exerpt'}
                   />
-                  <Flex gap={4}>
-                    <TagField
-                      placeholder=''
-                      label={t('what_students_will_learn', { ns: 'instructor' })}
-                      name='learn'
-                      formik={formik}
-                      values={formik.values.learn}
-                      errorMessage={formik.touched.learn ? (formik.errors.learn as string) : ''}
-                    />
-                    <TagField
-                      label={t('requirements', { ns: 'instructor' })}
-                      name='requirements'
-                      placeholder=''
-                      formik={formik}
-                      values={formik.values.requirements}
-                      errorMessage={
-                        formik.touched.requirements ? (formik.errors.requirements as string) : ''
-                      }
-                    />
-                  </Flex>
+                  <TagField
+                    placeholder=''
+                    label={t('what_students_will_learn', { ns: 'instructor' })}
+                    name='learn'
+                    formik={formik}
+                    values={formik.values.learn}
+                    errorMessage={formik.touched.learn ? (formik.errors.learn as string) : ''}
+                  />
+                  <TagField
+                    label={t('requirements', { ns: 'instructor' })}
+                    name='requirements'
+                    placeholder=''
+                    formik={formik}
+                    values={formik.values.requirements}
+                    errorMessage={
+                      formik.touched.requirements ? (formik.errors.requirements as string) : ''
+                    }
+                  />
+                  <TagField
+                    label={t('course_tags', { ns: 'instructor' })}
+                    name='tags'
+                    placeholder='JavaScript...'
+                    formik={formik}
+                    values={formik.values.tags}
+                    errorMessage={formik.touched.tags ? (formik.errors.tags as string) : ''}
+                  />
                   <Box>
                     <FormLabel mb={3}>
                       {t('description', { ns: 'instructor' })}{' '}
@@ -129,7 +135,6 @@ const InstructorManageCourse = ({ submitHandler, titleBtn, courseValues }: Instr
                       <ErrorAlert title={error as string} clearHandler={clearCourseError} />
                     )}
                   </>
-
                   <Button
                     w={'full'}
                     type={'submit'}
@@ -163,13 +168,11 @@ const InstructorManageCourse = ({ submitHandler, titleBtn, courseValues }: Instr
                     placeholder='-'
                     arrOptions={coursePrice}
                   />
-                  <TagField
-                    label={t('course_tags', { ns: 'instructor' })}
-                    name='tags'
-                    placeholder='JavaScript...'
-                    formik={formik}
-                    values={formik.values.tags}
-                    errorMessage={formik.touched.tags ? (formik.errors.tags as string) : ''}
+                  <SelectField
+                    name='language'
+                    label={t('language', { ns: 'instructor' })}
+                    placeholder='-'
+                    arrOptions={courseLng}
                   />
                   <FormLabel>
                     {t('course_preview_image', { ns: 'instructor' })}{' '}
@@ -215,7 +218,6 @@ const InstructorManageCourse = ({ submitHandler, titleBtn, courseValues }: Instr
                       )}
                     </Box>
                   )}
-
                 </Stack>
               </Box>
             </Flex>

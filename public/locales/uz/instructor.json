@@ -57,7 +57,6 @@
 	"course_tags": "Kurs teglari",
 	"course_preview_image": "Kursni oldindan ko'rish rasm",
 	"create_course_btn": "Kurs yaratish",
-
 	"edit_course_title": "Kurslarni tahrirlash",
 	"edit_course_description": "Kurslarni boshqarish va kurslaringiz uchun o'quv rejasini yaratish",
 	"curriculum_description": "Kursingiz uchun o'quv dasturini boshqaring",
@@ -92,5 +91,6 @@
 	"embed_video": "Videoni joylashtirish",
 	"hour": "Soat",
 	"minute": "Minut",
-	"second": "Sekund"
+	"second": "Sekund",
+	"language": "Til"
 }

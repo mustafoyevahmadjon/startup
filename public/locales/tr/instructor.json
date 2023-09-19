@@ -57,7 +57,6 @@
 	"course_tags": "Kurs etiketleri",
 	"course_preview_image": "Kurs önizleme resmi",
 	"create_course_btn": "Kurs oluştur",
-
 	"edit_course_title": "Kursları düzenle",
 	"edit_course_description": "Kursları yönetme ve kurslarınız için müfredat oluşturma",
 	"curriculum_description": "Kursunuz için müfredatı yönetin",
@@ -92,5 +91,6 @@
 	"embed_video": "Videoyu yerleştir",
 	"hour": "Saat",
 	"minute": "Dakika",
-	"second": "saniye"
+	"second": "saniye",
+	"language": "Dil"
 }

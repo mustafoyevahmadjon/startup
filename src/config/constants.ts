@@ -206,6 +206,7 @@ export const courses: CourseType[] = [
         description: "",
         category: "",
         _id: "",
+        language: "",
         isActive: false,
         author: {
             firstName: 'Samar',
@@ -230,6 +231,7 @@ export const courses: CourseType[] = [
         description: "",
         category: "",
         _id: "",
+        language: "",
         isActive: false,
         author: {
             firstName: 'Samar',
@@ -254,6 +256,7 @@ export const courses: CourseType[] = [
         description: "",
         category: "",
         _id: "",
+        language: "",
         isActive: false,
         author: {
             firstName: 'Samar',
@@ -277,6 +280,7 @@ export const courses: CourseType[] = [
         description: "",
         category: "",
         _id: "",
+        language: "",
         isActive: false,
         author: {
             firstName: 'Samar',
@@ -301,6 +305,7 @@ export const courses: CourseType[] = [
         description: "",
         category: "",
         _id: "",
+        language: "",
         isActive: false,
         author: {
             firstName: 'Samar',
@@ -321,6 +326,7 @@ export const courses: CourseType[] = [
         tags: ["frontend"],
         requirements: [""],
         learn: [""],
+        language: "",
         exerpt: "",
         description: "",
         category: "",
@@ -536,3 +542,5 @@ export const courseCategory = [
 ];
 
 export const coursePrice = [10, 20, 30, 40, 50];
+
+export const courseLng = ['en', 'uz', 'ru', 'tr'];
